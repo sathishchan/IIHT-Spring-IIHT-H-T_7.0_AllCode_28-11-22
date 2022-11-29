@@ -23,7 +23,6 @@ public class addsubmul {
 		System.out.println("Subtraction is " +Square1.Sub(10));
 		System.out.println("Multiply is " +Square1.Mul(10));
 		System.out.println("Division is " +Square1.Div(10));
-
 	}
 	
 }

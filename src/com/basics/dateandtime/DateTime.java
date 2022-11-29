@@ -18,8 +18,8 @@ public class DateTime {
 		LocalDateTime rightnow = LocalDateTime.now();
 		System.out.println(rightnow);
 		
-		LocalTime time = LocalTime.now(ZoneId.of("CET"));
-		System.out.println(time);
+		LocalTime t1 = LocalTime.now(ZoneId.of("CET"));
+		System.out.println(t1);
 
 	}
 
