@@ -9,6 +9,7 @@ public class BasicFunction {
 				System.out.println(Div(12,23));
 				System.out.println(Squ(12,23));
 				System.out.println(Cube(12,23));
+				System.out.println("Its working fine now");
 }
 	static Integer Addition(Integer num1, Integer num2) {
 		return num1+num2;
