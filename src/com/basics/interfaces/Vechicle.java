@@ -18,18 +18,18 @@ public class Vechicle {
 //implement done by second user
 class Car implements Drivable {
 	public void driven() {
-		System.out.println("The Car can be Driven");
+		System.out.println("The Car can be driven");
 	}
 }
 
 class Bike implements Drivable {
 	public void driven() {
-		System.out.println("The Bike can be Driven");
+		System.out.println("The Bike can be driven");
 	}
 }
 
 class Truck implements Drivable {
 	public void driven() {
-		System.out.println("The Truck can be Driven");
+		System.out.println("The Truck can be driven");
 	}
 }

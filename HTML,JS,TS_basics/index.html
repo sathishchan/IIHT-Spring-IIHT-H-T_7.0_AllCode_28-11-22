@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn JS</title>
+</head>
+<body style="background-color:rebeccapurple">
+    <h1 style="border-style: double; border-color:brown; text-align:center; background-color:#FF33D4 ; color:bisque;"> Javascript basic training </h1>
+    <script src="index.js"> </script>
+        <div>
+                <p> Fill the Registeration Form Below </p>
+        </div>
+
+        <div style="border-style:groove; border-color:white;">
+            <h2 
+                style="border-style:double; border-color:brown; text-align:center; background-color:black ; border-color:black ;">
+            User Registration </h2>
+
+            <label for="First Name"> First Name </label>
+            <br/>
+            <input style="margin-bottom:5px ; margin-left :15px ; margin-top:5px ;" type="text" id="firstname"
+            placeholder="Enter your First name" />
+            <br/>
+
+            <label for="Last Name"> Last Name </label>
+            <br/>
+            <input style="margin-bottom:5px ; margin-left :15px ; margin-top:5px ;" type="text" id="lastname"
+            placeholder="Enter your Last name" />
+            <br/>
+
+            <label for="email"> Email </label>
+            <br/>
+            <input style="margin-bottom:5px ; margin-left :15px ; margin-top:5px ;" type="email" ; id="email"
+            placeholder="Enter your Email Id" />
+            <br/>
+
+            <label for="dob"> Enter your DOB </label>
+            <br/>
+            <input type="date" style="margin-bottom:5px ; margin-left :15px ; margin-top:5px ;" id=DOB />
+            <br/>
+
+            <br/>
+            <label style="margin-left:10px ;" for="gender"> Gender </label>
+            <br/>
+            <input style="margin-left:10px ;" type="radio" name="gender" valie="Male" id="gender">Male
+            <br/>
+            <input style="margin-left:10px ;" type="radio" name="gender" valie="Female" id="gender">Female
+            <br/>
+            <input style="margin-left:10px ;" type="radio" name="gender" valie="Others" id="gender">Others
+            <br/>
+            <br/>
+
+            <label> Choose Your Favourite Programming Language</label>
+            <br/>
+            <input type="checkbox" id="lang" value="java">Java
+            <input type="checkbox" id="lang" value="javascript">JavaScript
+            <input type="checkbox" id="lang" value="python">Python
+            <br/>
+            <br/>
+            
+            <button onclick="Greet()"> Submit </button> 
+            <a href="https://www.google.com/"> Search Google page </a> <!--anchor tag-->
+        </div>
+
+        <br/>
+        <br/>
+
+        <ol style="border-style: groove; border-color:grey;"> 
+        <!-- Ordered List-->
+        <li> Maggi Preparation in 2 mins:  </li>
+        <li> Boil the water </li>
+        <li> Put vegetables and masala in the water </li>
+        <li> Add the noodle and let it bil for 2 min</li>
+        <li> Serve it in a bowl </li>
+        </ol>
+
+        <ul>
+            <!-- Un-Ordered List-->
+            <li> Get Grocery </li>
+            <li> Get bike washed </li>
+            <li> Play Cricker</li>
+        </ul>
+            
+        
+        <center>
+            <table border="2">
+                <tr> <th> Item name</th> <th> Expiry Date</th> <th> Quantity</th> </tr>
+                <tr> <td>sathish</td> <td>Nov 17th 2022</td> <td>3 KG</td></tr>
+                <tr> <td>Vivek</td> <td>Feb 14th 2020</td> <td>1 KG</td></tr>
+                <tr> <td>Arun</td> <td>Dec 2nd 2021</td> <td>5 KG</td></tr>
+            </table>
+        </center>
+
+</body>
+</html>
