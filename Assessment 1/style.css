@@ -1,0 +1,95 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+}
+
+.container {
+    position: relative;
+    background-color: #fff;
+    max-width: 900px;
+    width:100%;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 15px;
+}
+
+.container header {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.container form {
+    position: relative;
+    margin-top: 16px;
+    min-height: 378px;
+    background-color:#fff;
+}
+
+
+.container form .form {
+    position: absolute;
+    background-color:#fff;
+}
+
+
+.container form .details {
+    margin-top: 5px;
+}
+
+.container form .details.ID {
+    margin-top: 20px;
+}
+
+.container form .fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+} 
+
+
+form .fields .input-field {
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 7px 0;
+}
+
+
+.input-field label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #2e2e2e;
+} 
+
+
+.input-field input {
+    height: 20px;
+    margin: 4px 0;
+    
+} 
+
+.container form button {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    max-width: 100px;
+    width: 100px;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color:#4070f4;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color:#4b26f2;
+}
+
