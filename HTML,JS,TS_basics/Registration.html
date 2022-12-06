@@ -37,7 +37,7 @@
 
         <div class="input-field">    
             <label> Mobile Number </label> 
-            <input type="number" id="mobile" placeholder="Enter Mobile Number" required>
+            <input type="number" id="mobile" onKeyDown="if(this.value.length==15 && event.keyCode!=8) return false;" placeholder="Enter Mobile Number" required>
         </div>
     
         <div class="input-field">

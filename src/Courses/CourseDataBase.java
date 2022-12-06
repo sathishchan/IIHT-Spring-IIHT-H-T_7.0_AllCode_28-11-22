@@ -32,22 +32,23 @@ public class CourseDataBase {
 
 }
 
-class MySort implements Comparator<Course> {
+//class MySort implements Comparator<Course> {
 
-	@Override
-	public int compare(Course o1, Course o2) {
+//	@Override
+//	public int compare(Course o1, Course o2) {
 		
-		return o1.getTotalfees() - o2.getTotalfees();
-	}
+//		return o1.getTotalfees() - o2.getTotalfees();
+//	}
+//}
 	
-class MySort1 implements Comparator<Course> {
+//class MySort1 implements Comparator<Course> {
 
-	@Override
-	public int compare(Course o1, Course o2) {
+//	@Override
+//	public int compare(Course o1, Course o2) {
 		
-		return o1.getCourseduration() - o2.getCourseduration();
-	}
+//		return o1.getCourseduration() - o2.getCourseduration();
+//	}
 	
-}
+//}
 	
-}
+

@@ -2,7 +2,6 @@ package Courses;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class CourseMain {
 	
@@ -39,21 +38,12 @@ public class CourseMain {
 		}
 	}
 	
-public static void displaymain2() {
-		
-		Consumer<Course> c2 = course -> System.out.println(course);
-		List<Course> courseList = CourseDataBase.getAllCourses();
-		courseList.forEach((course) -> {
-			if(course.getTotalfees()>=5000) {
-				c2.accept(course);
-			}
-		});
-	}
-	
+
 	
 	public static void main(String[] args) {
 		
-		displaymain1();
+		//displaymain1();
+		displaymain();
 		
 		}
 	}
