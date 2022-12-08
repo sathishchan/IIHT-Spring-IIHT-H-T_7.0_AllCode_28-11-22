@@ -8,11 +8,11 @@
 		<version>2.7.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.emp</groupId>
-	<artifactId>HR-Service</artifactId>
+	<groupId>com.resource</groupId>
+	<artifactId>Resource-Service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HR-Service</name>
-	<description>HR service</description>
+	<name>Resource-Service</name>
+	<description>Resource-Service</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
