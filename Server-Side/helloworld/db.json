@@ -15,11 +15,11 @@
       "id": 2
     },
     {
-      "firstname": "sathish",
-      "lastname": "udhayakumar",
-      "age": 22,
+      "firstname": "Ram",
+      "lastname": "kumar",
+      "age": 35,
       "gender": "male",
-      "email": "satz@gmail.com",
+      "email": "ram@gmail.com",
       "id": 3
     }
   ]
