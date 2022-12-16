@@ -11,19 +11,20 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userID;
-	private String username;
+	private String firstname;
+	private String lastname;
 	private String password;
+	private String email;
 	private String role;
-	private int phone;
 	
-
-	public User(int userID, String username, String password, String role, int phone) {
+	public User(int userID, String firstname, String lastname, String password, String email, String role) {
 		super();
 		this.userID = userID;
-		this.username = username;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.password = password;
+		this.email = email;
 		this.role = role;
-		this.phone = phone;
 	}
 
 	public User() {
@@ -38,12 +39,20 @@ public class User {
 		this.userID = userID;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getPassword() {
@@ -54,6 +63,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getRole() {
 		return role;
 	}
@@ -61,14 +78,6 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
-	public int getPhone() {
-		return phone;
-	}
-
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
-
+	
 }
 

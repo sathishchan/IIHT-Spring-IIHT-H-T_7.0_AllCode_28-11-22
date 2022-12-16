@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "firstname": "chandran",
+      "Lastname": "kumar",
+      "age": 22,
+      "email": "chan@gmail.com",
+      "id": 1
+    },
+    {
+      "firstname": "sathish",
+      "Lastname": "kumar",
+      "age": 22,
+      "email": "chan@gmail.com",
+      "id": 2
+    },
+    {
+      "firstname": "sathish",
+      "lastname": "udhayakumar",
+      "age": 22,
+      "gender": "male",
+      "email": "satz@gmail.com",
+      "id": 3
+    }
+  ]
+}

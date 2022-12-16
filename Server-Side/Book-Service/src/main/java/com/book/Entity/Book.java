@@ -1,36 +1,53 @@
 package com.book.Entity;
 
+import java.util.Date;
+
 public class Book {
 	
+	private Integer bookID;
+	private String logo;
 	private String title;
-	private String Author;
-	private int releaseddate;
 	private String category;
-	private String image;
-	private int price;
+	private Float price;
+	private String author;
 	private String publisher;
-	private boolean active;
+	private Date publishedDate;
+	private Boolean active;
 	private String content;
 	
-	private String username;
-
-	public Book(String title, String author, int releaseddate, String category, String image, int price,
-			String publisher, boolean active, String content, String username) {
+	public Book(Integer bookID, String logo, String title, String category, Float price, String author,
+			String publisher, Date publishedDate, Boolean active, String content) {
 		super();
+		this.bookID = bookID;
+		this.logo = logo;
 		this.title = title;
-		Author = author;
-		this.releaseddate = releaseddate;
 		this.category = category;
-		this.image = image;
 		this.price = price;
+		this.author = author;
 		this.publisher = publisher;
+		this.publishedDate = publishedDate;
 		this.active = active;
 		this.content = content;
-		this.username = username;
 	}
 
 	public Book() {
 		super();
+	}
+
+	public Integer getBookID() {
+		return bookID;
+	}
+
+	public void setBookID(Integer bookID) {
+		this.bookID = bookID;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 	public String getTitle() {
@@ -41,22 +58,6 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getAuthor() {
-		return Author;
-	}
-
-	public void setAuthor(String author) {
-		Author = author;
-	}
-
-	public int getReleaseddate() {
-		return releaseddate;
-	}
-
-	public void setReleaseddate(int releaseddate) {
-		this.releaseddate = releaseddate;
-	}
-
 	public String getCategory() {
 		return category;
 	}
@@ -65,20 +66,20 @@ public class Book {
 		this.category = category;
 	}
 
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public int getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Float price) {
 		this.price = price;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public String getPublisher() {
@@ -89,11 +90,19 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	public boolean isActive() {
+	public Date getPublishedDate() {
+		return publishedDate;
+	}
+
+	public void setPublishedDate(Date publishedDate) {
+		this.publishedDate = publishedDate;
+	}
+
+	public Boolean getActive() {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -105,12 +114,4 @@ public class Book {
 		this.content = content;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
 }
