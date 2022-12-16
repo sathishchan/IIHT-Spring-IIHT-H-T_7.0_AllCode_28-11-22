@@ -11,13 +11,15 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { RegUsersComponent } from './Components/reg-users/reg-users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserformComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegUsersComponent
   ],
   imports: [
     BrowserModule,
