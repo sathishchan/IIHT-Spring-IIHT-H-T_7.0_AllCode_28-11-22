@@ -1,0 +1,46 @@
+<div class="container">
+    <h4> {{title}} </h4> <br>
+    
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Book Name</span>
+        <input required [(ngModel)]="book.bookname" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book name">
+    </div>
+    <br>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Book Genre</span>
+        <input [(ngModel)]="book.bookgenre" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book genre">
+    </div>
+    <br>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Book Author</span>
+        <input [(ngModel)]="book.bookauthor" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book Author">
+    </div>
+    <br>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Book Price</span>
+        <input [(ngModel)]="book.bookprice" type="number" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book price">
+    </div>
+    <br>
+    <span> Borrowed Status </span>
+    <div style="margin: 20px;" class="form-check">
+        <input [(ngModel)]="book.borrowedstatus" value="true" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+            True
+        </label>
+    </div>
+    <div style="margin: 20px;" class="form-check">
+        <input [(ngModel)]="book.borrowedstatus" value="false" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+            checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+            False
+        </label>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button [disabled]="false" (click)="submit()" class="btn btn-primary" type="button">Submit</button>
+      </div>
+   
+</div>

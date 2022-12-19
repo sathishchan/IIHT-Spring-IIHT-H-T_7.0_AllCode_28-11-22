@@ -1,0 +1,36 @@
+{
+  "books": [
+    {
+      "bookname": "titanic",
+      "bookgenre": "Adventure",
+      "bookauthor": "williams",
+      "bookprice": 300,
+      "borrowedstatus": true,
+      "id": 1
+    },
+    {
+      "bookname": "Raman sita",
+      "bookgenre": "Story",
+      "bookauthor": "Ram",
+      "bookprice": 100,
+      "borrowedstatus": "false",
+      "id": 2
+    },
+    {
+      "bookname": "aaa",
+      "bookgenre": "bbbb",
+      "bookauthor": "ccc",
+      "bookprice": 800,
+      "borrowedstatus": "false",
+      "id": 3
+    },
+    {
+      "bookname": "Virat journey",
+      "bookgenre": "Biography",
+      "bookauthor": "john",
+      "bookprice": 460,
+      "borrowedstatus": "false",
+      "id": 4
+    }
+  ]
+}

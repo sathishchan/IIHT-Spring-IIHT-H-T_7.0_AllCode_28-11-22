@@ -1,0 +1,9 @@
+.container {
+        min-height: 50vh;
+        align-items: center;
+        justify-content: center;
+        background: #dfdfde;
+        background-color: rgb(170, 209, 27);
+        
+        padding: 30px;
+}
