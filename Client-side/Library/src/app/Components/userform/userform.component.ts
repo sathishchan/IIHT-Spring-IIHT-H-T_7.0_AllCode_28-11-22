@@ -9,7 +9,12 @@ import { BookService } from 'src/app/Services/book.service';
 })
 export class UserformComponent implements OnInit {
 
-  title: String = "Please fill the below details";
+  onSubmit(data:any) {
+    console.log(data);
+    
+  }
+
+  title: String = "Add Books Details";
 
   book: Book = new Book();
 
@@ -25,7 +30,6 @@ export class UserformComponent implements OnInit {
       }
       )
   }
-
 
   constructor(private bookService : BookService) { }
 

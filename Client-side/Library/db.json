@@ -31,6 +31,14 @@
       "bookprice": 460,
       "borrowedstatus": "false",
       "id": 4
+    },
+    {
+      "bookname": "",
+      "bookgenre": "",
+      "bookauthor": "",
+      "bookprice": 0,
+      "borrowedstatus": "true",
+      "id": 5
     }
   ]
 }

@@ -19,7 +19,7 @@ export class AllbooksComponent implements OnInit {
     })
   }
 
-  deletebooks(book, index) {
+  deletebooks(book:any, index:any) {
     const observables = this.bookSerive.deletebooks(book);
     observables.subscribe((response:any) => {
       console.log(response);
