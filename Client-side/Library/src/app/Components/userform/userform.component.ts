@@ -9,9 +9,9 @@ import { BookService } from 'src/app/Services/book.service';
 })
 export class UserformComponent implements OnInit {
 
-  onSubmit(data:any) {
+  onSubmit(data: any) {
     console.log(data);
-    
+
   }
 
   title: String = "Add Books Details";
@@ -20,18 +20,19 @@ export class UserformComponent implements OnInit {
 
   submit() {
     const observables = this.bookService.saveBook
-    (this.book);
-    observables.subscribe (
-      (response:any) => {
+      (this.book);
+    observables.subscribe(
+      (response: any) => {
         console.log(response);
+        alert("Submitted Successfully");
       }, function (error) {
         console.log(error);
         alert("Something went wrong, Please try again!")
       }
-      )
+    )
   }
 
-  constructor(private bookService : BookService) { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
   }

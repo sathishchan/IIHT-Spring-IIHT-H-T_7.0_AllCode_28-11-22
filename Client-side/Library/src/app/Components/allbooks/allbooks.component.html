@@ -2,13 +2,14 @@
 background-color: rgb(170, 209, 27); color:white; font-weight: 600;"> All Books </h1>
 
 <ol style="padding-left: 100px; padding-right: 100px; padding-top: 50px;" class="list-group list-group-numbered">
-    <li *ngFor="let b of book, index as i" style="border-radius: 8px; background-color: rgb(170, 209, 27);" class="list-group-item d-flex justify-content-between align-items-start">
+    <li *ngFor="let b of book, index as i" style="border-radius: 8px; background-color: rgb(170, 209, 27);"
+        class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
             <div class="fw-bold"> {{b.bookname}} </div>
-           <div class="show"> {{b.bookprice}} </div>
+            <div class="show"> {{b.bookprice}} </div>
         </div>
         <button type="button" (click)="deletebooks(b,i)" class="btn btn-outline-danger">Delete</button>
     </li>
-    <button type="button" (click)="sort()" style="margin-left: 950px; margin-top: 20px;" 
+    <button type="button" (click)="sort()" style="margin-left: 950px; margin-top: 20px;"
         class="btn btn-outline-warning">Price Filter</button> <br>
 </ol>

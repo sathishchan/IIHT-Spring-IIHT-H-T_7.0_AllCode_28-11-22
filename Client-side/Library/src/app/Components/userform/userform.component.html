@@ -6,10 +6,10 @@
                 <span class="input-group-text" id="inputGroup-sizing-sm">Book Name</span>
                 <input required #bookname="ngModel" minlength="3" maxlength="20" [(ngModel)]="book.bookname"
                     name="bookname" type="text" ngModel class="form-control" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book name"> 
-                    
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book name">
+
                 <span Style="margin-left:20px;" *ngIf="bookname.invalid && bookname.touched" id="inputGroup-sizing-sm"
-                    class="error">Book name is not valid</span>
+                    class="error">* Book name is not valid</span>
             </div>
         </div>
         <br>
@@ -20,18 +20,19 @@
                     name="bookgenre" type="text" ngModel class="form-control" aria-label="Sizing example input"
                     aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book genre">
                 <span Style="margin-left:20px;" *ngIf="bookgenre.invalid && bookgenre.touched" id="inputGroup-sizing-sm"
-                    class="error">Book genre is not valid</span>
+                    class="error">* Book genre is not valid</span>
             </div>
         </div>
         <br>
         <div class="form-group">
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Book Author</span>
-                <input pattern="[a-zA-Z ]*" required #bookauthor="ngModel" minlength="3" maxlength="20" [(ngModel)]="book.bookauthor"
-                    name="bookauthor" type="text" ngModel class="form-control" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book Author">
-                <span Style="margin-left:20px;" *ngIf="bookauthor.invalid && bookauthor.touched" id="inputGroup-sizing-sm"
-                    class="error">Book Author is not valid</span>
+                <input pattern="[a-zA-Z ]*" required #bookauthor="ngModel" minlength="3" maxlength="20"
+                    [(ngModel)]="book.bookauthor" name="bookauthor" type="text" ngModel class="form-control"
+                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                    placeholder="Enter a Book Author">
+                <span Style="margin-left:20px;" *ngIf="bookauthor.invalid && bookauthor.touched"
+                    id="inputGroup-sizing-sm" class="error">* Book Author is not valid</span>
             </div>
         </div>
         <br>
@@ -41,8 +42,8 @@
                 <input required #bookprice="ngModel" minlength="3" [(ngModel)]="book.bookprice" type="number"
                     name="bookprice" ngModel class="form-control" aria-label="Sizing example input"
                     aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Book price">
-                <span Style="margin-left:20px;" *ngIf="bookprice.invalid" id="inputGroup-sizing-sm"
-                    class="error">Book price is not valid</span>
+                <span Style="margin-left:20px;" *ngIf="bookprice.invalid" id="inputGroup-sizing-sm" class="error">* Book
+                    price is not valid</span>
             </div>
         </div>
         <br>
@@ -56,7 +57,7 @@
                 </label>
             </div>
             <div style="margin: 20px;" class="form-check">
-                <input [(ngModel)]="book.borrowedstatus" value="false"  class="form-check-input" type="radio"
+                <input [(ngModel)]="book.borrowedstatus" value="false" class="form-check-input" type="radio"
                     name="flexRadioDefault" id="flexRadioDefault2" checked>
                 <label class="form-check-label" for="flexRadioDefault2">
                     False
@@ -64,7 +65,8 @@
             </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button [disabled]="userForm.invalid" (click)="submit()" class="btn btn-primary" type="button">Submit</button>
+            <button [disabled]="userForm.invalid" (click)="submit()" class="btn btn-primary"
+                type="button">Submit</button>
         </div>
 
     </form>

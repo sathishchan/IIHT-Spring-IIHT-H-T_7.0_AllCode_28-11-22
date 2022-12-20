@@ -9,21 +9,21 @@ import { BookService } from 'src/app/Services/book.service';
 })
 export class AllbooksComponent implements OnInit {
 
-  book : Book[] =[];
+  book: Book[] = [];
 
-  constructor(private bookSerive:BookService) { }
+  constructor(private bookSerive: BookService) { }
 
   sort() {
-    this.book.sort((book1,book2) => {
+    this.book.sort((book1, book2) => {
       return book1.bookprice - book2.bookprice;
     })
   }
 
-  deletebooks(book:any, index:any) {
+  deletebooks(book: any, index: any) {
     const observables = this.bookSerive.deletebooks(book);
-    observables.subscribe((response:any) => {
+    observables.subscribe((response: any) => {
       console.log(response);
-      this.book.splice(index,1);
+      this.book.splice(index, 1);
     })
   }
 

@@ -9,22 +9,22 @@ const BASE_URL = 'http://localhost:1000'
 })
 export class BookService {
   saveBook(book: {
-    bookname : String;
-    bookgenre : String;
-    bookauthor : String;
-    bookprice : number;
-    borrowedstatus : String;
-}) {
-  return this.http.post(BASE_URL + "/add/book" , book);
-}
+    bookname: String;
+    bookgenre: String;
+    bookauthor: String;
+    bookprice: number;
+    borrowedstatus: String;
+  }) {
+    return this.http.post(BASE_URL + "/add/book", book);
+  }
 
-getbooks() {
-  return this.http.get(BASE_URL + "/allbooks");
-}
+  getbooks() {
+    return this.http.get(BASE_URL + "/allbooks");
+  }
 
-deletebooks(book: any) {
-  return this.http.delete(BASE_URL + "/remove/" + book.id);
-}
+  deletebooks(book: any) {
+    return this.http.delete(BASE_URL + "/remove/" + book.id);
+  }
 
   constructor(private http: HttpClient) { }
 }
