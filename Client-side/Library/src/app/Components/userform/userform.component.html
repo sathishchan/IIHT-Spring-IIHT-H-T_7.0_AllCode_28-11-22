@@ -71,3 +71,84 @@
 
     </form>
 </div>
+
+
+
+
+<div class="container">
+    <h4> title </h4> <br>
+    <form #userForm="ngForm">
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">First Name</span>
+                <input required #firstname="ngModel" minlength="3" maxlength="20" [(ngModel)]="firstname"
+                    name="firstname" type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a First name">
+
+                <span Style="margin-left:20px;" *ngIf="firstname.invalid && firstname.touched" id="inputGroup-sizing-sm"
+                    class="error">* First name is not valid</span>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Last Name</span>
+                <input required #lastname="ngModel" minlength="3" maxlength="20" [(ngModel)]="lastname"
+                    name="lastname" type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Last name">
+                <span Style="margin-left:20px;" *ngIf="lastname.invalid && lastname.touched" id="inputGroup-sizing-sm"
+                    class="error">* Last name is not valid</span>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">User Name</span>
+                <input required #username="ngModel" minlength="3" maxlength="20" [(ngModel)]="username"
+                    name="username" type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Last name">
+                <span Style="margin-left:20px;" *ngIf="username.invalid && username.touched" id="inputGroup-sizing-sm"
+                    class="error">* User name is not valid</span>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+                <input required #password="ngModel" minlength="3" maxlength="20" [(ngModel)]="password"
+                    name="password" type="password" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Password">
+                <span Style="margin-left:20px;" *ngIf="lastname.invalid && lastname.touched" id="inputGroup-sizing-sm"
+                    class="error">* password is not valid</span>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Email Id</span>
+                <input required #email="ngModel" minlength="3" maxlength="20" [(ngModel)]="email"
+                    name="email" type="email" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Last name">
+                <span Style="margin-left:20px;" *ngIf="email.invalid && email.touched" id="inputGroup-sizing-sm"
+                    class="error">* Email id is not valid</span>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Role</span>
+                <input required #role="ngModel" minlength="3" maxlength="20" [(ngModel)]="role"
+                    name="role" type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Role">
+                <span Style="margin-left:20px;" *ngIf="lastname.invalid && lastname.touched" id="inputGroup-sizing-sm"
+                    class="error">* Role is not valid</span>
+            </div>
+        </div>
+        <br>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary"
+                type="button">Submit</button>
+        </div>
+
+    </form>
+</div>

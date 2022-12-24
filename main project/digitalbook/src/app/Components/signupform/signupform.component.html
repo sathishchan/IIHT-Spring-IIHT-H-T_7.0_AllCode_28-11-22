@@ -1,0 +1,34 @@
+<div class="container">
+    <h4> title </h4> <br>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">First Name</span>
+                <input required #bookname="ngModel" minlength="3" maxlength="20" [(ngModel)]="firstname"
+                    name="firstname" type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a First name">
+                    
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Last Name</span>
+                <input required #bookname="ngModel" minlength="3" maxlength="20" [(ngModel)]="lastname" name="lastname"
+                    type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Last name">
+            </div>
+        </div>
+        <br>
+
+
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary" type="button">Submit</button>
+        </div>
+
+    </form>
+</div>
