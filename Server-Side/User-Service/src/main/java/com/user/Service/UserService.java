@@ -1,23 +1,30 @@
 package com.user.Service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.user.Entity.User;
-import com.user.Repo.IUserRepo;
 
 @Service
-public class UserService implements IuserService {
+public class UserService implements UserDetailsService {
 	
 	@Autowired
-	private IUserRepo userrepo;
+	private IuserService iuserService;
 
 	@Override
-	public Integer saveUser(User user) {
-		User savedUser = userrepo.save(user);
-		return savedUser.getUserID();
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		com.user.Entity.User user = iuserService.getUserByName(username);
+		if(user == null) {
+			throw new UsernameNotFoundException("Entered username not found");
+		}
+		
+		return new User(user.getUsername(), user.getPassword(), new ArrayList<>());
 	}
-
-	
 
 }
