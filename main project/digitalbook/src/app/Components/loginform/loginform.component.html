@@ -1,1 +1,36 @@
-<p>loginform works!</p>
+
+<app-head></app-head>
+<div class="container">
+    <h3> Sign in </h3> <br>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">User Name</span>
+                <input required #username="ngModel" minlength="3" maxlength="20" [(ngModel)]="login.username" name="username"
+                    type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a user name">
+                    <span Style="margin-left:20px;" *ngIf="username.invalid && username.touched" id="inputGroup-sizing-sm" class="error">*username is not valid</span>   
+                </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+            <input required #password="ngModel" minlength="3" [(ngModel)]="login.password" name="password" type="password" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Password"> 
+                <span Style="margin-left:20px;" *ngIf="password.invalid && password.touched" id="inputGroup-sizing-sm" class="error">*Password is not valid</span>
+        </div>
+    </div>
+    <br>
+    <span class="reg">If you don't have account please click <a class="register" (click)="SignupRedirect()">register</a></span>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+           
+         <button [disabled]="userForm.invalid" (click)="submit()" class="btn btn-primary" type="button">Login</button>
+    
+        </div>
+
+    </form>
+</div>

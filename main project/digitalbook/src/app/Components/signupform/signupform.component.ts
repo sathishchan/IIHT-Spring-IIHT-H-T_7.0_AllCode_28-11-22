@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Signup from 'src/app/Entity/signup';
+import { UserService } from 'src/app/Services/signup.service';
+
 
 
 @Component({
@@ -13,17 +17,41 @@ export class SignupformComponent implements OnInit {
 
   }
 
-
-  firstname: String="";
-  lastname: String="";
+  signup :Signup = new Signup();
+  
 
   submit() {
-    console.log("Hello" + this.firstname + " " + this.lastname);
-    
- }
+    const observables = this.userService.saveSignup
+    (this.signup);
+    observables.subscribe (
+      (response:any) => {
+        console.log(response);
 
- 
-  constructor() { }
+        alert("Registered Successfully, Please login with Username and Password.");
+        this.router.navigateByUrl('/loginform')
+        
+      }, function(error) {
+        console.log(error);
+        alert("Something went wrong, Please try again!")
+        
+      }
+      )
+    }
+
+    redirectToSignin(){
+      this.router.navigateByUrl('/loginform')
+    }
+
+ clear(){
+   this.signup.firstname='';
+   this.signup.lastname='';
+   this.signup.username='';
+   this.signup.password='';
+   this.signup.email='';
+   this.signup.role='';
+   
+ }
+  constructor(private userService : UserService, private router: Router ) { }
 
   ngOnInit(): void {
   }

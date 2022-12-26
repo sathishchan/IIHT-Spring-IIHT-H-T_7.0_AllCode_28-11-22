@@ -1,0 +1,18 @@
+<nav>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2XFEj2l4cpqOAEficxSaazoUPbbtqCb3jmZuYAFpt&s" alt="book"> Digital Book
+    
+    <ul>
+    <li> <a style="color: green; margin-left:80px;" class="nav-link" (click)="logout()">Log out</a></li>
+    <br>
+    <div class="user">
+    User name:
+    <li *ngIf="username != undefined">{{username}}</li> 
+    Role:
+    <li *ngIf="userrole != undefined">{{userrole}}</li>
+    </div>
+    <!-- <li> <a style="color: green;" class="nav-link" routerLink="loginform" href="#">Signin</a></li> -->
+</ul>
+</nav>
+
+
+

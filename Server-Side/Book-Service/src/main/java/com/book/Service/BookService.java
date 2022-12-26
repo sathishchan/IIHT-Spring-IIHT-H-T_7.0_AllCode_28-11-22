@@ -17,7 +17,6 @@ public class BookService implements IbookService {
 	@Autowired
 	private IBookRepo iBookRepo;
 	
-	
 	@Override
 	public Long saveBook(Book book) {
 		Book saveBook = iBookRepo.save(book);
@@ -37,7 +36,7 @@ public class BookService implements IbookService {
 		existingBook.setAuthor(book.getAuthor());
 		existingBook.setPublisher(book.getPublisher());
 		existingBook.setPublishedDate(book.getPublishedDate());
-		existingBook.setIsActive(book.getIsActive());
+		existingBook.setIs_active(book.getIs_active());
 		existingBook.setBookContent(book.getBookContent());
 		
 		
@@ -47,12 +46,27 @@ public class BookService implements IbookService {
 
 
 	@Override
-	public List<Book> searchBook(BookSearch bookSearch) {
-		return iBookRepo.searchBooks(bookSearch.getTitle(), bookSearch.getAuthor(), bookSearch.getPublisher(), bookSearch.getPublishedDate());
+	public List<Book> searchBook(BookSearch search) {
+				return iBookRepo.searchBooks(search.getTitle() , search.getAuthor(), search.getPublisher(), search.getCategory());
 		
 	}
 
-	
-	
 
+	
 }
+
+//	@Override
+//	public void getAllSubscribedBooks(String subName) {
+//		return ;
+//	}
+
+
+	//@Override
+	//public Book getBookBySubscribedId(String subName, Long subscribedId) {
+	//	return iBookSubscriptionRepo.findbookBySubscriptionIdandUsername(subName, subscribedId);
+	//}
+
+
+
+
+

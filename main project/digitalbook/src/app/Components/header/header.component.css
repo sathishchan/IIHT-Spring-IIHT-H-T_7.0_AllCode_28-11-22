@@ -1,0 +1,30 @@
+nav{
+    background-color: skyblue;
+    padding: 15px;
+}
+
+nav img{
+    width: 70px;
+}
+
+nav ul {
+    float: right;
+    list-style-type: none;
+}
+
+ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+li a{
+    color: green;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.user {
+    font-weight:bold;
+    color: blue;
+}

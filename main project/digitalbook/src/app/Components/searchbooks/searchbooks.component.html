@@ -1,0 +1,81 @@
+<!-- <app-navbar></app-navbar> -->
+<app-header></app-header>
+<div class="container" *ngIf="!isViewBook">
+    <h3> Search Book </h3> <br>  
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <!-- <button  class="btn btn-primary" type="button" (click)="toggleView()" >View Book</button> -->
+    </div>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" Style="text-align: center;">
+            <button class="btn btn-primary"  (click)="submit()" type="button">All Books</button>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+                <input required #title="ngModel" minlength="3" [(ngModel)]="searchBook.title" name="title" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a title"> 
+                    
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+                <input required #author="ngModel" minlength="3" [(ngModel)]="searchBook.author" name="author" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Author name"> 
+                    
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Publisher</span>
+                <input required #publisher="ngModel" minlength="3" [(ngModel)]="searchBook.publisher" name="publisher" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Publisher"> 
+                    
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Category</span>
+                <input required #category="ngModel" minlength="3" [(ngModel)]="searchBook.category" name="category" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Published date"> 
+                    
+            </div>
+        </div>
+        <br>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary" (click)="submit()" type="button">Search</button>
+        </div>
+
+    
+
+    </form>
+</div>
+<div class="container" *ngIf="isViewBook">
+    <h1 class="display-2" style="text-align: center; border-color:white; border-style:double; 
+background-color: lightgreen; color:white; font-weight: 600;"> Book Details </h1>
+   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button  class="btn btn-primary" type="button" (click)="toggleView()" >Search Book</button>
+</div>
+
+<ol style="padding-left: 100px; padding-right: 100px; padding-top: 50px;" class="list-group list-group-numbered">
+    <li *ngFor="let b of books, index as i" style="border-radius: 8px; background-color:lightgreen"
+        class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          Book Title:  <div class="fw-bold"> {{b.title}}  </div> <br>
+          Book Author:  <div class="fw-bold"> {{b.author}}  </div> <br>
+          Book Publisher:  <div class="fw-bold"> {{b.publisher}}  </div> <br>
+          Book category:  <div class="fw-bold"> {{b.category}}  </div> <br>
+          Book Price:  <div class="show"> {{b.price}} </div> <br>
+        </div>
+       </li>
+    </ol> 
+</div>

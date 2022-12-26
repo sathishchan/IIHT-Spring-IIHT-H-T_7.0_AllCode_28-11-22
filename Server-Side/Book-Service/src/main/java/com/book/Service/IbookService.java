@@ -14,6 +14,16 @@ public interface IbookService {
 	Book updateBook(Book book, Long id);
 	
 	//search book
-	public List<Book> searchBook(BookSearch bookSearch);
+	public List<Book> searchBook(BookSearch search);
+	
+	
+	
+	
+	
+	//subscription
+	//public Long subscribeBook(Long bookId, SubscribeDetails subDetails);
+	//public Integer unsubscribeBook(Long subId, SubscribeDetails subDetails);
+	//public void getAllSubscribedBooks(String subName);
+	//public Book getBookBySubscribedId(String subName, Long subscribedId);
 
 }

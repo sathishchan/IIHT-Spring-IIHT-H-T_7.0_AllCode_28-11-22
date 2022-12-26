@@ -1,0 +1,112 @@
+<app-header></app-header>
+<div class="container">
+    <h3> Create Book </h3> <br>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Author Place</span>
+                <input required #image="ngModel" minlength="3" maxlength="20" [(ngModel)]="book.image" name="image"
+                    type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a user name">
+                    <span Style="margin-left:20px;" *ngIf="image.invalid && image.touched" id="inputGroup-sizing-sm" class="error">*Author place  is not valid</span>   
+                </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+            <input required #title="ngModel" minlength="3" [(ngModel)]="book.title" name="title" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a title"> 
+                <span Style="margin-left:20px;" *ngIf="title.invalid && title.touched" id="inputGroup-sizing-sm" class="error">*Title is not valid</span>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Category</span>
+            <input required #category="ngModel" minlength="3" [(ngModel)]="book.category" name="category" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Category"> 
+                <span Style="margin-left:20px;" *ngIf="category.invalid && category.touched" id="inputGroup-sizing-sm" class="error">*Category is not valid</span>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Price</span>
+            <input required #price="ngModel" minlength="3" [(ngModel)]="book.price" name="password" type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Price"> 
+                <span Style="margin-left:20px;" *ngIf="price.invalid && price.touched" id="inputGroup-sizing-sm" class="error">*Price is not valid</span>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+            <input required #author="ngModel" minlength="3" [(ngModel)]="book.author" name="author" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Author name"> 
+                <span Style="margin-left:20px;" *ngIf="author.invalid && author.touched" id="inputGroup-sizing-sm" class="error">*Athor is not valid</span>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Publisher</span>
+            <input required #publisher="ngModel" minlength="3" [(ngModel)]="book.publisher" name="publisher" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Publisher"> 
+                <span Style="margin-left:20px;" *ngIf="publisher.invalid && publisher.touched" id="inputGroup-sizing-sm" class="error">*Publisher is not valid</span>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Published Date</span>
+            <input required #publishedDate="ngModel" minlength="3" [(ngModel)]="book.publishedDate" name="publishedDate" type="date" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Published date"> 
+                <span Style="margin-left:20px;" *ngIf="publishedDate.invalid && publishedDate.touched" id="inputGroup-sizing-sm" class="error">*Published Date is not valid</span>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Book Content</span>
+            <input required #content="ngModel"  [(ngModel)]="book.content" name="content" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a Publisher"> 
+                <span Style="margin-left:20px;" *ngIf="content.invalid && content.touched" id="inputGroup-sizing-sm" class="error">*content is not valid</span>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <span class="active"> Active </span>
+        <div style="margin: 20px;" class="form-check">
+            <input [(ngModel)]="book.isActive" value="true" ngModel class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                True
+            </label>
+        </div>
+        <div style="margin: 20px;" class="form-check">
+            <input [(ngModel)]="book.isActive" value="false" class="form-check-input" type="radio"
+                name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+                False
+            </label>
+        </div>
+    </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button [disabled]="userForm.invalid" (click)="submit()" class="btn btn-primary" type="button">Submit</button>
+        </div>
+
+    </form>
+</div>
+

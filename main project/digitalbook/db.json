@@ -1,0 +1,20 @@
+{
+  "signup": [
+    {
+      "firstname": "udhaya",
+      "lastname": "kumar",
+      "username": "udhayakumar",
+      "password": "kumar444",
+      "role": "reader",
+      "id": 1
+    },
+    {
+      "firstname": "sathish",
+      "lastname": "kumar",
+      "username": "udhayakumar",
+      "password": "kumar444",
+      "role": "author",
+      "id": 2
+    }
+  ]
+}

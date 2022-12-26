@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+
+
+<h1 class="display-2" style="text-align: center; border-color:green; border-style:double; 
+background-color: green; color:green; font-weight: 600;"> Book Details </h1>
+<div class="bbk">
+<ol style="padding-left: 100px; padding-right: 100px; padding-top: 50px;" class="list-group list-group-numbered">
+    <li *ngFor="let b of book, index as i" style="border-radius: 8px; "
+        class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold"> {{b.title}}  </div>
+            <div class="show"> {{b.price}} </div>
+        </div>
+       </li>
+    </ol>
+</div>
