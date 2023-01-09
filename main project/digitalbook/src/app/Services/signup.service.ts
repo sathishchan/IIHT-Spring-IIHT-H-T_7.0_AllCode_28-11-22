@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-const BASE_URL = 'http://localhost:2001';
-const Book_BASE_URL = 'http://localhost:2002';
+const BASE_URL = 'http://ec2-54-250-147-221.ap-northeast-1.compute.amazonaws.com:2001';
+const Book_BASE_URL = 'http://ec2-54-250-147-221.ap-northeast-1.compute.amazonaws.com:2002';
 
 
 @Injectable({

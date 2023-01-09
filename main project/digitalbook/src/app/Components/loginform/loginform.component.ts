@@ -42,7 +42,7 @@ login: Login = new Login();
         
       }, function(error) {
         console.log(error);
-        alert("Something went wrong, Please try again!")
+        alert("Invalid Credentials!")
         
       }
       )

@@ -20,7 +20,7 @@ import com.user.Service.UserService;
 import com.user.utility.JWTUtility;
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin(origins ="*", allowedHeaders = "*")
 public class SecurityController {
 	
 	@Autowired

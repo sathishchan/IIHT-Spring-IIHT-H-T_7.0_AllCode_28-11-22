@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import com.user.Entity.BookSearch;
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin(origins ="*", allowedHeaders = "*")
 public class UserBookcontroller {
 	
 	@Autowired

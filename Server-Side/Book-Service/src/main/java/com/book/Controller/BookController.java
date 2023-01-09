@@ -14,7 +14,7 @@ import com.book.Entity.BookSearch;
 import com.book.Service.IbookService;
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin(origins ="*", allowedHeaders = "*")
 public class BookController {
 	
 	
