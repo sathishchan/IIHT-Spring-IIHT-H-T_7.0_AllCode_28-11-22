@@ -8,14 +8,13 @@
 		<version>2.7.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.user</groupId>
-	<artifactId>user</artifactId>
+	<groupId>com.employee</groupId>
+	<artifactId>employee</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>User-Service</name>
+	<name>Employee-Service</name>
 	<description>Employee management system for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-		<spring-cloud.version>2021.0.5</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -38,7 +37,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
 
 		<dependency>
 			<groupId>com.mysql</groupId>
@@ -55,30 +53,7 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		<dependency>
-    		<groupId>io.jsonwebtoken</groupId>
-    		<artifactId>jjwt</artifactId>
-   			<version>0.9.1</version>
-		</dependency>
-		
-		<dependency>
-   		 <groupId>javax.xml.bind</groupId>
-   		 <artifactId>jaxb-api</artifactId>
-   		 </dependency>
-		
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<plugins>

@@ -1,4 +1,4 @@
-package com.user.model;
+package com.employee.model;
 
 public enum Role {
 	
