@@ -89,6 +89,8 @@ public class SecurityController {
 		System.out.println(id);
 		ResponseEntity<User> responseEntity = new ResponseEntity<>(HttpStatus.OK);
 		try {
+			//String url ="http://EmployeeService/delete/"+id;
+			 //this.restTemplate.delete(url);
 			userService.deleteUserDetail(id);
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -100,6 +102,12 @@ public class SecurityController {
 	//update user
 	@PutMapping("/update/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+		 String url ="http://EmployeeService/update/"+id;
+		    Employee employeedata= new Employee();
+			employeedata.setEmail(user.getEmail());
+			employeedata.setFirstname(user.getFirstname());
+			employeedata.setLastname(user.getLastname());
+			this.restTemplate.put(url, user);
 		return new ResponseEntity<User>(userService.updateUserDetail(user, id), HttpStatus.OK);
 	}
 
@@ -109,10 +117,19 @@ public class SecurityController {
 		return userService.getAllUsers();
 	}
 	
+	
+	//get all employee details
 	@GetMapping("/getallemp")
-    public List<Employee> getBook(){
+    public List<Employee> getEmp(){
 	  String url ="http://EmployeeService/getall/";
 	  return  this.restTemplate.getForObject(url,List.class);
+    }
+	
+	//get employee by id
+	@GetMapping("/getemp/{id}")
+    public Optional<Employee> getEmployee(@PathVariable Long id){
+	  String url ="http://EmployeeService/get/";
+			  return this.restTemplate.getForObject(url+id,Optional.class);
     }
 	
 }

@@ -24,8 +24,8 @@ public class EmployeeController {
 	private IEmployeeService employeeService;
 	
 	@PostMapping("/Add")
-	Integer createEmployee(@RequestBody Employee employee) {
-		Integer id = employeeService.saveEmployee(employee);
+	Long createEmployee(@RequestBody Employee employee) {
+		Long id = employeeService.saveEmployee(employee);
 		System.out.println(id);
 		return id;
 	}
@@ -36,13 +36,13 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/get/{id}")
-	public Optional<Employee> getEmployeesById(@PathVariable Integer id){
+	public Optional<Employee> getEmployeesById(@PathVariable Long id){
 		Optional<Employee> employeeById =employeeService.getEmployeesById(id);
 		return employeeById ;
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Employee> deleteEmployee(@PathVariable Integer id){
+	public ResponseEntity<Employee> deleteEmployee(@PathVariable Long id){
 		ResponseEntity<Employee> responseEntity = new ResponseEntity<>(HttpStatus.OK);
 		try {
 			employeeService.deleteEmployee(id);
@@ -55,13 +55,13 @@ public class EmployeeController {
 		return responseEntity ;
 	}
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Employee> updateEmployee(@PathVariable("id") Integer id ,@RequestBody Employee employee){
+	public ResponseEntity<Employee> updateEmployee(@PathVariable("id") Long id ,@RequestBody Employee employee){
 		
 		return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
 	}
 	
 	@PatchMapping("/updateSalary/{id}")
-	public void updateSalary(@PathVariable("id") Integer id ,@RequestBody Employee employee){
+	public void updateSalary(@PathVariable("id") Long id ,@RequestBody Employee employee){
 		
 		employeeService.updateSalary(employee, id);
 	}

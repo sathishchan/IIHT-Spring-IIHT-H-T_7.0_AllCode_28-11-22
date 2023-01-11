@@ -7,15 +7,15 @@ import com.emp.Entity.Employee;
 
 public interface IEmployeeService {
 	
-	public Integer saveEmployee(Employee employee);
+	public Long saveEmployee(Employee employee);
 
 	public List<Employee> getAllEmployees();
 	
-	public Optional<Employee> getEmployeesById(Integer id);
+	public Optional<Employee> getEmployeesById(Long id);
 	
-	public void deleteEmployee(Integer id);
+	public void deleteEmployee(Long id);
 	
-	public Employee updateEmployee(Employee employee ,Integer id );
+	public Employee updateEmployee(Employee employee ,Long id );
 	
-	public void updateSalary(Employee employee ,Integer id );
+	public void updateSalary(Employee employee ,Long id );
 }

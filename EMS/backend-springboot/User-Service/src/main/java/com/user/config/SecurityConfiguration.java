@@ -66,6 +66,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.antMatchers("/getallemp")
 		.permitAll()
+		.antMatchers("/getemp/{id}")
+		.permitAll()
 		.anyRequest()
 		.authenticated()
 		.and() 

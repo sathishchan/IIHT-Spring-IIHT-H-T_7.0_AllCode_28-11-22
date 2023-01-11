@@ -19,7 +19,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	private IEmployeeRepo employeeRepo;
 	
 	@Override
-	public Integer saveEmployee(Employee employee) {
+	public Long saveEmployee(Employee employee) {
 		Employee saveEmployee =employeeRepo .save(employee);
 		return saveEmployee.getEmpid();
 	}
@@ -31,21 +31,38 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	}
 
 	@Override
-	public Optional<Employee> getEmployeesById(Integer id) {
+	public Optional<Employee> getEmployeesById(Long id) {
 		// TODO Auto-generated method stub
-		Employee employee=(Employee) employeeRepo.findByUserid(id);// .orElseThrow(() -> new UserDetails("User not found with email: "+ id));
-		return employeeRepo.findById(employee.getEmpid());
+		List<Employee> employee=employeeRepo.findByUserid(id);
+		Long empid = null;
+		for(Employee employee2:employee) {
+			empid=employee2.getEmpid();
+			break;
+		}
+		return employeeRepo.findById(empid);
+	}
+	
+	public void deleteEmployee(Long id) {
+		List<Employee> employee=employeeRepo.findByUserid(id);
+		Long empid = null;
+		for(Employee employee2:employee) {
+			empid=employee2.getEmpid();
+			break;
+		}
+		employeeRepo.deleteById(empid);
 	}
 	
 	@Override
-	public void deleteEmployee(Integer id) {
-		employeeRepo.deleteById(id);
-	}
-
-	@Override
-	public Employee updateEmployee(Employee employee, Integer id) {
-		Employee existingEmployee = employeeRepo.findById(id).orElseThrow(()
-				-> new ResourceNotFoundException("Employee","id",id));
+	public Employee updateEmployee(Employee employee, Long id) {
+		Long empid = null;
+		List<Employee> employeedata=employeeRepo.findByUserid(id);
+		for(Employee employee2:employeedata) {
+			empid=employee2.getEmpid();
+			break;
+		}
+		final Long empidnew= empid;
+		Employee existingEmployee = employeeRepo.findById(empid).orElseThrow(()
+				-> new ResourceNotFoundException("Employee","empid",empidnew));
 		existingEmployee.setEmail(employee.getEmail());
 		existingEmployee.setFirstname(employee.getFirstname());
 		existingEmployee.setLastname(employee.getLastname());
@@ -53,10 +70,18 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		return existingEmployee;
 	}
 	
+
 	@Override
-	public void updateSalary(Employee employee, Integer id) {
-		Employee existingEmployee = employeeRepo.findById(id).orElseThrow(()
+	public void updateSalary(Employee employee, Long id) {
+		List<Employee> employeedata=employeeRepo.findByUserid(id);
+		Long empid = null;
+		for(Employee employee2:employeedata) {
+			empid=employee2.getEmpid();
+			break;
+		}
+		Employee existingEmployee = employeeRepo.findById(empid).orElseThrow(()
 				-> new ResourceNotFoundException("Employee","id",id));
+		existingEmployee.setJob(employee.getJob());
 		existingEmployee.setSalary(employee.getSalary());
 		employeeRepo.save(existingEmployee);
 	}
