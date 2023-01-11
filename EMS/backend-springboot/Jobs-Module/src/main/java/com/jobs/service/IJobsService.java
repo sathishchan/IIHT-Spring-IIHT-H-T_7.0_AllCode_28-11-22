@@ -6,8 +6,13 @@ import com.jobs.entity.Jobs;
 
 public interface IJobsService {
 	
+	//create job
 	Long saveJobs (Jobs jobs);
 	
-	public List<Jobs> getalljobs();
+	//get all jobs
+	public List<Jobs> getAllJobs();
+	
+	//update job
+	Jobs updateJobs(Jobs jobs, Long id);
 
 }
