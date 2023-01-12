@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.user.entity.Employee;
+import com.user.entity.Jobs;
 import com.user.entity.JwtRequest;
 import com.user.entity.JwtResponse;
 import com.user.entity.User;
@@ -131,5 +132,20 @@ public class SecurityController {
 	  String url ="http://EmployeeService/get/";
 			  return this.restTemplate.getForObject(url+id,Optional.class);
     }
+	
+	//get jobs
+	@GetMapping("/availablejobs")
+	public List<Jobs> getalljobs() {
+		String url = "http://JobsModule/alljobs";
+		return this.restTemplate.getForObject(url, List.class);
+	}
+	
+	//create jobs
+	@PostMapping("/createjobs")
+	public ResponseEntity<?> createJobs(@RequestBody Jobs jobs) {
+		String url = "http://JobsModule/add/Jobs";
+		Long jobId=this.restTemplate.postForObject(url, jobs, Long.class);
+		return new ResponseEntity<>(jobId, HttpStatus.OK);
+	}
 	
 }
