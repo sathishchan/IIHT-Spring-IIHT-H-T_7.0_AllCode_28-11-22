@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
 import com.user.entity.Employee;
@@ -31,6 +32,7 @@ import com.user.service.UserService;
 import com.user.utility.JWTUtility;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class SecurityController {
 	
 	@Autowired
@@ -90,8 +92,8 @@ public class SecurityController {
 		System.out.println(id);
 		ResponseEntity<User> responseEntity = new ResponseEntity<>(HttpStatus.OK);
 		try {
-			//String url ="http://EmployeeService/delete/"+id;
-			 //this.restTemplate.delete(url);
+			String url ="http://EmployeeService/delete/"+id;
+			this.restTemplate.delete(url);
 			userService.deleteUserDetail(id);
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -114,7 +116,7 @@ public class SecurityController {
 
 	//Registered users
 	@GetMapping("/allusers")
-	public List<User> getAllLibraryBooks() {
+	public List<User> getUsers() {
 		return userService.getAllUsers();
 	}
 	
@@ -148,4 +150,19 @@ public class SecurityController {
 		return new ResponseEntity<>(jobId, HttpStatus.OK);
 	}
 	
+	
+	//update jobs
+	@PutMapping("/updatejob/{id}")
+	public ResponseEntity<?> updateJobs(@PathVariable("id") Long id, @RequestBody Jobs jobs) {
+		 String url ="http://JobsModule/update/"+id;
+		 try {
+		 this.restTemplate.put(url, jobs);
+		 }
+		 catch (Exception e) {
+			 return new ResponseEntity<>("Fail",HttpStatus.BAD_REQUEST);
+		}
+		 return new ResponseEntity<>("Success",HttpStatus.OK);
+	}
+
+
 }

@@ -1,0 +1,22 @@
+{
+  "signup": [
+    {
+      "firstname": "sathish",
+      "lastname": "kumar",
+      "email": "sathi@gmail.com",
+      "username": "sathish",
+      "password": "Satz@123",
+      "role": "manager",
+      "id": 1
+    },
+    {
+      "firstname": "Nirmal",
+      "lastname": "Raj",
+      "username": "Nirmal",
+      "password": "Nirmal@123",
+      "email": "raj@yahoo.com",
+      "role": "user",
+      "id": 3
+    }
+  ]
+}

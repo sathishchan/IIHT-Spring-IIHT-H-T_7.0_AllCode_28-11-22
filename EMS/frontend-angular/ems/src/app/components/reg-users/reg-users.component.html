@@ -1,0 +1,89 @@
+
+<h1 class="display-2" style="text-align: center; border-color:white; border-style:double; 
+background-color: rgb(170, 209, 27); color:white; font-weight: 600;"> Registered Users </h1>
+
+<ol  class="list-group list-group-numbered pad grid_height">
+    <li *ngFor="let u of users, index as i" class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw"><span class="fw-bold">User Name:</span> {{u.username}} </div>
+        <div class="fw"><span class="fw-bold">Email Id:</span> {{u.email}} </div>
+        <div class="fw"><span class="fw-bold">Role:</span> {{u.role}} </div>
+      </div>
+      <button type="button" (click)="editUser(u)"  class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+      &nbsp;<button type="button" (click)="deleteRow(u,i)" class="btn btn-outline-danger">Delete</button>
+    </li>
+  </ol>
+
+<!-- Trigger/Open The Modal -->
+<!-- <button id="myBtn">Open Modal</button> -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal" *ngIf="ShowEdit">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+   <h4>Edit User Detail</h4> <span class="close" (click)="popClose()">&times;</span>
+    
+   <div class="container">
+
+    <h3> User Details </h3> <br>
+    <form #updateForm="ngForm">
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">First Name</span>
+                <input required #firstname="ngModel" minlength="3" [(ngModel)]="user.firstname" maxlength="20"  name="firstname" value="user.firstname"
+                    type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a first name">
+                    <span Style="margin-left:20px;" *ngIf="firstname.invalid && firstname.touched" id="inputGroup-sizing-sm" class="error">*firstname is not valid</span>
+                    </div>
+        </div>
+        <br>
+
+
+      <div class="form-group">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Last Name</span>
+            <input required #lastname="ngModel" minlength="3" maxlength="20" [(ngModel)]="user.lastname" name="lastname" value="user.lastname"
+                type="text" ngModel class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" placeholder="Enter a last name">
+                <span Style="margin-left:20px;" *ngIf="lastname.invalid && lastname.touched" id="inputGroup-sizing-sm" class="error">*lastname is not valid</span>
+                </div>
+    </div>
+    <br>
+        
+    <div class="form-group">
+      <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">User Name</span>
+          <input required #username="ngModel" minlength="3" maxlength="20" [(ngModel)]="user.username" name="username" value="user.username"
+              type="text" ngModel class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm" placeholder="Enter a user name">
+              <span Style="margin-left:20px;" *ngIf="username.invalid && username.touched" id="inputGroup-sizing-sm" class="error">*username is not valid</span>
+              </div>
+  </div>
+  <br>
+
+    <div class="form-group">
+      <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Email Id</span>
+          <input required #email="ngModel" minlength="3" maxlength="20" [(ngModel)]="user.email" name="email"
+              type="text" email ngModel class="form-control" aria-label="Sizing example input" value="user.email"
+              aria-describedby="inputGroup-sizing-sm" placeholder="Enter a email id">
+              <span Style="margin-left:20px;" *ngIf="email.invalid && email.touched" id="inputGroup-sizing-sm" class="error">*email id is not valid</span>
+              </div>
+  </div>
+  <br>
+
+
+        <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
+           <button class="btn btn-primary" (click)="popClose()" type="">Cancel</button>&nbsp;
+
+           <button class="btn btn-primary" (click)="updateUser()" type="submit">Update</button>
+       </div>
+
+   </form>
+</div>
+
+  </div>
+
+</div>
+
