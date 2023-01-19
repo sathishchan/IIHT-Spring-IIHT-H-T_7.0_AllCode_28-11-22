@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.user.entity.Employee;
 import com.user.entity.Jobs;
-import com.user.entity.Role;
 import com.user.entity.User;
 import com.user.exception.ResourceNotFoundExceptionHandler;
 import com.user.repo.IUserRepo;
@@ -79,11 +78,12 @@ public class UserService implements IUserService {
 		System.out.println("---------------------------1---------------------------");
 		User existingUser = iUserRepo.findById(userid).orElseThrow(
 				() -> new ResourceNotFoundExceptionHandler("User", "userid", userid));
-		String rolename=null;
-		for (Role name :existingUser.getRoles()) {
-	rolename=name.getName().toString();
-	break;
-		}
+		String rolename=existingUser.getRole().toString();
+		//for (Role name :existingUser.getRoles()) {
+	//rolename=name.getName().toString();
+	//break;
+		//}
+		
 		System.out.println("---------------------------2---------------------------");
 		if(rolename.equals(jobs.getApplicablerole())) {
 			System.out.println("---------------------------3---------------------------");

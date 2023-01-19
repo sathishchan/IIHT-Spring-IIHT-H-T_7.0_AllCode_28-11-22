@@ -17,7 +17,7 @@ export class UserService {
     username: String;
     password: String;
     email: String;
-    roles: String;
+    role: String;
   }) {
     return this.http.post(BASE_URL + "/signup", signup);
   }

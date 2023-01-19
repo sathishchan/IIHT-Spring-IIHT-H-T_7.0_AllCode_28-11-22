@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import com.user.entity.User;
+import com.user.model.Role;
 import com.user.repo.IUserRepo;
 import com.user.service.IUserService;
 
@@ -31,7 +32,7 @@ class UserServiceApplicationTests {
 	
 	@Test
 	public void signupTest() {
-		User userobj = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123");
+		User userobj = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123",Role.manager);
 		when(this.iUserRepo.save(userobj)).thenReturn(userobj);
 		assertEquals(userobj,iUserService.signup(userobj));
 	}
@@ -39,10 +40,10 @@ class UserServiceApplicationTests {
 	
 	@Test
 	public void getAllUserTest() {
-		User userobj1 = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123");
-		User userobj2 = new User(2L,"Ram","kumar","ram@gmail.com","Ram","Ram@123");
-		User userobj3 = new User(3L,"mala","rani","rani@gmail.com","Mala","Mala@123");
-		User userobj4 = new User(4L,"Ragavan","sri","ragavan@gmail.com","Ragavendra","Rags@123");
+		User userobj1 = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123",Role.manager);
+		User userobj2 = new User(2L,"Ram","kumar","ram@gmail.com","Ram","Ram@123",Role.manager);
+		User userobj3 = new User(3L,"mala","rani","rani@gmail.com","Mala","Mala@123",Role.manager);
+		User userobj4 = new User(4L,"Ragavan","sri","ragavan@gmail.com","Ragavendra","Rags@123",Role.manager);
 		List<User> listofusers = List.of(userobj1,userobj2,userobj3,userobj4);
 		when(this.iUserRepo.findAll()).thenReturn(listofusers);
 		assertEquals(4,iUserService.getAllUsers().size());
@@ -50,7 +51,7 @@ class UserServiceApplicationTests {
 	
 	@Test
 	public void getUserByNameTest() {
-		User userobj = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123");
+		User userobj = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123",Role.manager);
 		String user = "sathish";
 		when(this.iUserRepo.findByUsername(user)).thenReturn(userobj);
 		assertEquals(userobj,iUserRepo.findByUsername(user));
@@ -65,7 +66,7 @@ class UserServiceApplicationTests {
 	
 	@Test
 	public void updateTest() {
-		User user = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123");
+		User user = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123",Role.manager);
 		when(this.iUserRepo.findById(1L)).thenReturn(Optional.of(user));
 		assertEquals(1L, user.getId());
 		when(this.iUserRepo.save(user)).thenReturn(user);

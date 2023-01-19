@@ -35,7 +35,7 @@ export class LoginformComponent implements OnInit {
 
         }
         else{
-          alert("role"+response.role);
+          alert("role: "+response.role);
           this.router.navigateByUrl('/home')
         }
       }, function(error) {

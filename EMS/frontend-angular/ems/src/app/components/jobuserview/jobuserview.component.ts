@@ -31,7 +31,7 @@ export class JobuserviewComponent implements OnInit {
     })
   }
 
-  AssignJob(jobdata){
+  AssignJob(jobdata: any){
     let userid=sessionStorage.getItem('id')
     let jobobj={};
     jobobj["id"]=jobdata.id

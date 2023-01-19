@@ -26,7 +26,7 @@ import com.user.entity.Employee;
 import com.user.entity.Jobs;
 import com.user.entity.JwtRequest;
 import com.user.entity.JwtResponse;
-import com.user.entity.Role;
+
 import com.user.entity.User;
 import com.user.model.Responseobject;
 import com.user.service.IUserService;
@@ -85,13 +85,11 @@ public class SecurityController {
 		final UserDetails userDetails = userDataService.loadUserByUsername(jwtRequest.getUsername());
 		final String token = jwtUtility.generateToken(userDetails);
 		User loggedUser = iUserService.getUserByName(jwtRequest.getUsername());
-		String rolename=null;
-		for (Role name :loggedUser.getRoles()) {
-		rolename=name.getName().toString();
-		break;
-	 }
-		return new ResponseEntity<>(new JwtResponse(token,  loggedUser.getUsername() , rolename,loggedUser.getId()), HttpStatus.OK);
+		return new ResponseEntity<>(new JwtResponse(token, loggedUser.getUsername(), loggedUser.getRole().toString(), loggedUser.getId()),
+				HttpStatus.OK);
+		
 	}
+
 	
 	//delete user
 	@DeleteMapping("/remove/{id}")
