@@ -26,7 +26,7 @@ export class RegUsersComponent implements OnInit {
     })
   }
 
-  editUser(userobj){
+  editUser(userobj: any){
     this.ShowEdit=true;
     this.userId=userobj.id
     this.user=userobj

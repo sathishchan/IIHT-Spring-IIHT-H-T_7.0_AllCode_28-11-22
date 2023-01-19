@@ -1,7 +1,6 @@
 package com.user.model;
 
-public enum Role {
-	
+public enum ERoles {
 	manager,
 	user
 

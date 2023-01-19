@@ -1,0 +1,98 @@
+<h1 class="display-2" style="text-align: center; border-color:white; border-style:double; 
+background-color: rgb(170, 209, 27); color:white; font-weight: 600;"> Job Details </h1>
+
+<ol  class="list-group list-group-numbered pad grid_height">
+    <li *ngFor="let j of jobs, index as i" class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw"><span class="fw-bold">Job Name:</span> {{j.jobname}} &nbsp; &nbsp; &nbsp; &nbsp;<span class="fw-bold">Starting Time:</span> {{j.startingtime}} &nbsp; &nbsp; &nbsp; &nbsp; <span class="fw-bold">End Time:</span> {{j.endtime}} &nbsp; &nbsp; &nbsp; &nbsp;  <span class="fw-bold">Profit Value:</span> {{j.profitvalue}} &nbsp; &nbsp; &nbsp; &nbsp; <span class="fw-bold">Applicable Role:</span> {{j.applicablerole}} &nbsp; &nbsp; &nbsp; &nbsp; <span class="fw-bold">Status:</span> {{j.status}}</div>
+        
+      </div>
+      <button type="button" (click)="editJob(j)"  class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+      
+    </li>
+  </ol>
+
+
+  <!-- Trigger/Open The Modal -->
+<!-- <button id="myBtn">Open Modal</button> -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal" *ngIf="ShowEdit" >
+
+    <!-- Modal content -->
+    <div class="modal-content">
+     <h4>Edit Job Detail</h4> <span class="close" (click)="popClose()" >&times;</span> <br>
+      
+     
+     <div class="container">
+  
+      
+      <form #updateForm="ngForm">
+          <div class="form-group">
+              <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Job Name</span>
+                  <input required #jobname="ngModel" minlength="3"  maxlength="20"  name="jobname" [(ngModel)]="job.jobname" value="job.jobname"
+                      type="text" ngModel class="form-control" aria-label="Sizing example input"
+                      aria-describedby="inputGroup-sizing-sm" placeholder="Enter a job name">
+                      <span Style="margin-left:20px;" *ngIf="jobname.invalid && jobname.touched" id="inputGroup-sizing-sm" class="error">*jobname is not valid</span>
+                      </div>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Starting Time</span>
+                <input required #startingtime="ngModel" minlength="3" maxlength="20"  [(ngModel)]="job.startingtime" name="startingtime"
+                    type="time" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a start time">
+                    <span Style="margin-left:20px;" *ngIf="startingtime.invalid && startingtime.touched" id="inputGroup-sizing-sm" class="error">*start time is not valid</span>
+                    </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">End Time</span>
+                <input required #endtime="ngModel" minlength="3" maxlength="20" [(ngModel)]="job.endtime" name="endtime"
+                    type="time" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a end time">
+                    <span Style="margin-left:20px;" *ngIf="endtime.invalid && endtime.touched" id="inputGroup-sizing-sm" class="error">*end time is not valid</span>
+                    </div>
+        </div>
+        <br>
+      
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Profit value</span>
+                <input required #profitvalue="ngModel" minlength="3" maxlength="20" [(ngModel)]="job.profitvalue" name="profitvalue"
+                    type="number" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a profit value">
+                    <span Style="margin-left:20px;" *ngIf="profitvalue.invalid && profitvalue.touched" id="inputGroup-sizing-sm" class="error">*profit value is not valid</span>
+                    </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Applicablerole</span>
+                <input required #applicablerole="ngModel" minlength="3" maxlength="20" [(ngModel)]="job.applicablerole" name="applicablerole"
+                    type="text" ngModel class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" placeholder="Enter a applicablerole">
+                    <span Style="margin-left:20px;" *ngIf="applicablerole.invalid && applicablerole.touched" id="inputGroup-sizing-sm" class="error">*applicablerole is not valid</span>
+                    </div>
+        </div>
+        <br>
+  
+  
+          <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
+             <button class="btn btn-primary"  (click)="popClose()" type="">Cancel</button>&nbsp;
+  
+             <button class="btn btn-primary" (click)="updateJob()" type="submit">Update</button>
+         </div>
+  
+     </form>
+  </div>
+  
+    </div>
+  
+  </div>

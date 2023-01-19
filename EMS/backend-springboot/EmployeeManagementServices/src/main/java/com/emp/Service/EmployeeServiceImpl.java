@@ -10,8 +10,6 @@ import com.emp.Entity.Employee;
 import com.emp.Repo.IEmployeeRepo;
 import com.emp.exception.ResourceNotFoundException;
 
-import jdk.jshell.spi.ExecutionControl.UserException;
-
 @Service
 public class EmployeeServiceImpl implements IEmployeeService{
 
@@ -72,18 +70,51 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	
 
 	@Override
-	public void updateSalary(Employee employee, Long id) {
+	public void updateJobSalary(Employee employee, Long id) {
+		System.out.println("--------------------12--------------------");
 		List<Employee> employeedata=employeeRepo.findByUserid(id);
 		Long empid = null;
 		for(Employee employee2:employeedata) {
 			empid=employee2.getEmpid();
 			break;
 		}
+		System.out.println("--------------------13--------------------");
 		Employee existingEmployee = employeeRepo.findById(empid).orElseThrow(()
 				-> new ResourceNotFoundException("Employee","id",id));
-		existingEmployee.setJob(employee.getJob());
-		existingEmployee.setSalary(employee.getSalary());
+		if(!(employee.getJob()==null) &&! (employee.getJob()=="")) {
+			existingEmployee.setJob(employee.getJob());
+			System.out.println("--------------------14--------------------");
+		}
+		if(!(employee.getSalary()==null)) {
+			Long totalsaly=0L;
+			if(existingEmployee.getSalary() !=null) {
+				totalsaly=existingEmployee.getSalary();
+			}
+			totalsaly=totalsaly+employee.getSalary();
+			
+		existingEmployee.setSalary(totalsaly);
+		}
+		System.out.println("--------------------15--------------------");
 		employeeRepo.save(existingEmployee);
+		System.out.println("--------------------15.001--------------------");
+	}	
+			
+	
+	@Override
+	public String jobcheck(Long id) {
+		Long empid = null;
+		List<Employee> employeedata=employeeRepo.findByUserid(id);
+		for(Employee employee2:employeedata) {
+			empid=employee2.getEmpid();
+			break;
+		}
+		final Long empidnew= empid;
+		Employee existingEmployee = employeeRepo.findById(empid).orElseThrow(
+				() -> new ResourceNotFoundException("Employee", "empid", empidnew));
+		
+		return existingEmployee.getJob();
 	}
+
+	
 	
 }

@@ -4,5 +4,5 @@ export default class Signup {
     username: String = '';
     password: String = '';
     email: String = '';
-    role: String = '';
+    roles: String = '';
 }

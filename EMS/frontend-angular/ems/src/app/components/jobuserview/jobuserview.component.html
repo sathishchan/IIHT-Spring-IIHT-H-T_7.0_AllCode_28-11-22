@@ -1,0 +1,47 @@
+<div class="container-fluid ps-md-0 custom" class="p-3">
+    <div class="text-center pt-2">
+        <h2 class="fs-5 text-decoration-underline">All Jobs</h2>
+    </div>
+    <div class="text-end p-2">
+        
+        <button type="button"  class="btn btn-outline-info">Refresh</button>
+    </div>
+    <div class="container-fluid tableFixHead">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr class="fs-6">
+                    <th scope="col">S.No</th>
+                    <th scope="col">Job Name</th>
+                    <th scope="col">StartingTime</th>
+                    <th scope="col">EndTime</th>
+                    <th scope="col">Profit Value</th>
+                    <th scope="col">Applicable Role</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let j of jobs, index as i">
+                <tr class="fs-6">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{j.jobname}}</td>
+                    <td>{{j.startingtime}}</td>
+                    <td>{{j.endtime}}</td>
+                    <td>{{j.profitvalue}}</td>
+                    <td>{{j.applicablerole}}</td>
+                    <td>{{j.status | uppercase}}</td>
+                    
+                    <td>
+                        
+                    <button type="button"(click)="AssignJob(j)"  class="btn btn-outline-danger">Assign</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+

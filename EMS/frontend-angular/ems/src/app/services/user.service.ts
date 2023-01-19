@@ -17,9 +17,21 @@ export class UserService {
     username: String;
     password: String;
     email: String;
-    role: String;
+    roles: String;
   }) {
     return this.http.post(BASE_URL + "/signup", signup);
+  }
+
+  //create job details
+  saveJob(job: {
+    jobname: String;
+    startingtime: Date;
+    endtime: Date;
+    profitvalue: Number;
+    applicablerole : String;
+    status : String;
+  }) {
+    return this.http.post(BASE_URL + "/createjobs", job);
   }
 
   //login
@@ -35,21 +47,41 @@ export class UserService {
     return this.http.get(BASE_URL + "/allusers");
   }
 
+  //viewjob
+  getJobs() {
+    return this.http.get(BASE_URL + "/availablejobs");
+  }
+
   //deleteusers
   deleteUsers(signup: any) {
     return this.http.delete(BASE_URL + "/remove/" + signup.id);
   }
 
-  
+ 
+  //updateusers
+  updateuser(id: any, userdata: any) {
+    return this.http.put(BASE_URL + "/update/" + id, userdata);
+  }
 
+  //updatejobs
+  updatejob(id: any, jobdata: any) {
+    return this.http.put(BASE_URL + "/updatejob/" + id, jobdata);
+  }
+
+  updateUserJobStatus(userid: any, jobdata: any){
+    return this.http.put(BASE_URL + "/updateJobAndSalary/user/" + userid, jobdata);
+
+  }
   //getUserById(id: number) {
   //  return this.http.get(BASE_URL + "/" + id);
   //}
 
  
 
-  updateuser(id, userdata) {
-    return this.http.put(BASE_URL + "/update/" + id, userdata);
+  //Employee details  
+  //employeeDetails
+  getEmpDetails() {
+    return this.http.get(BASE_URL + "/getallemp");
   }
 
 

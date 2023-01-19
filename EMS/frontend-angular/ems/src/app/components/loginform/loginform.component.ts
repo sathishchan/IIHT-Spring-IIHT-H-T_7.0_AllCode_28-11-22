@@ -25,13 +25,17 @@ export class LoginformComponent implements OnInit {
     observables.subscribe (
       (response:any) => {
         console.log(response);
-        sessionStorage.setItem('role',response.role)
+        sessionStorage.setItem('role',response.role);
+        sessionStorage.setItem('id',response.id);
+        sessionStorage.setItem('name',response.username);
+
         alert("Successfully login");
         if(response.role == 'manager'){
           this.router.navigateByUrl('/reguser')
 
         }
         else{
+          alert("role"+response.role);
           this.router.navigateByUrl('/home')
         }
       }, function(error) {

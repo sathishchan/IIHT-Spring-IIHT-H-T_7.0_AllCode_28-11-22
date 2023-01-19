@@ -1,6 +1,7 @@
 package com.user.controller;
 
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,9 @@ import com.user.entity.Employee;
 import com.user.entity.Jobs;
 import com.user.entity.JwtRequest;
 import com.user.entity.JwtResponse;
+import com.user.entity.Role;
 import com.user.entity.User;
+import com.user.model.Responseobject;
 import com.user.service.IUserService;
 import com.user.service.UserDataService;
 import com.user.service.UserService;
@@ -82,8 +85,12 @@ public class SecurityController {
 		final UserDetails userDetails = userDataService.loadUserByUsername(jwtRequest.getUsername());
 		final String token = jwtUtility.generateToken(userDetails);
 		User loggedUser = iUserService.getUserByName(jwtRequest.getUsername());
-		return new ResponseEntity<>(new JwtResponse(token,  loggedUser.getUsername() , loggedUser.getRole().toString()),
-				HttpStatus.OK);
+		String rolename=null;
+		for (Role name :loggedUser.getRoles()) {
+		rolename=name.getName().toString();
+		break;
+	 }
+		return new ResponseEntity<>(new JwtResponse(token,  loggedUser.getUsername() , rolename,loggedUser.getId()), HttpStatus.OK);
 	}
 	
 	//delete user
@@ -131,8 +138,10 @@ public class SecurityController {
 	//get employee by id
 	@GetMapping("/getemp/{id}")
     public Optional<Employee> getEmployee(@PathVariable Long id){
+		//Employee objemp = new Employee();
+		//objemp.getJob();
 	  String url ="http://EmployeeService/get/";
-			  return this.restTemplate.getForObject(url+id,Optional.class);
+		 return this.restTemplate.getForObject(url+id,Optional.class);
     }
 	
 	//get jobs
@@ -163,6 +172,32 @@ public class SecurityController {
 		}
 		 return new ResponseEntity<>("Success",HttpStatus.OK);
 	}
+	
+	@PutMapping("/updateJobAndSalary/user/{userid}")
+	public ResponseEntity<?> updateJobAndSalary(@PathVariable("userid") Long userid, @RequestBody Jobs jobs) {
+		System.out.println("----------1234----------------");
+		Boolean task=userService.updateJobAndSalary(jobs, userid);
+		if(task) {
+			return new ResponseEntity<>(new Responseobject("Success","200"), HttpStatus.OK);
+//			return new ResponseEntity<>("Success",HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(new Responseobject("Failure","400"), HttpStatus.BAD_REQUEST);
 
+//			return new ResponseEntity<>("Fail",HttpStatus.BAD_REQUEST);
+
+		}
+	}
+	
+	
+//	@GetMapping("/getUserJob/user/{userid}")
+//	public Optional getAssignedUserJob(@PathVariable("userid") Long userid) {
+//		System.out.println("----------1234----------------"+userid);
+//		String url ="http://EmployeeService/jobcheck/{id}";
+//		  return this.restTemplate.getForObject(url+userid,Optional.class);
+//			}
+	
+
+	
 
 }

@@ -1,13 +1,20 @@
 package com.user.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
-import com.user.model.Role;
+
+
 
 @Entity
 public class User {
@@ -20,11 +27,17 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	//@Enumerated(EnumType.STRING)
+	//private Role role;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,targetEntity=Role.class)
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name ="user_id", referencedColumnName ="id"),
+            inverseJoinColumns = @JoinColumn(name ="role_id", referencedColumnName ="id"))
+	private Set<Role> roles = new HashSet<>();
 	
 	
-	public User(Long id, String firstname, String lastname, String email, String username, String password, Role role) {
+	public User(Long id, String firstname, String lastname, String email, String username, String password,
+			Set<Role> roles) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -32,12 +45,23 @@ public class User {
 		this.email = email;
 		this.username = username;
 		this.password = password;
-		this.role = role;
+		this.roles = roles;
 	}
 
 
 	public User() {
 		super();
+	}
+
+
+	public User(Long id, String firstname, String lastname, String email, String username, String password) {
+		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.username = username;
+		this.password = password;
 	}
 
 
@@ -101,20 +125,20 @@ public class User {
 	}
 
 
-	public Role getRole() {
-		return role;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
-				+ ", username=" + username + ", password=" + password + ", role=" + role + "]";
+				+ ", username=" + username + ", password=" + password + ", roles=" + roles + "]";
 	}
 
 }

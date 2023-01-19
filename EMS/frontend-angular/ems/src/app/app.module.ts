@@ -15,6 +15,9 @@ import { SignupformComponent } from './components/signupform/signupform.componen
 import {HttpClientModule} from '@angular/common/http';
 import { RegUsersComponent } from './components/reg-users/reg-users.component';
 import { EmpDetailsComponent } from './components/emp-details/emp-details.component';
+import { JobDetailsComponent } from './components/job-details/job-details.component';
+import { ViewjobComponent } from './components/viewjob/viewjob.component';
+import { JobuserviewComponent } from './components/jobuserview/jobuserview.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { EmpDetailsComponent } from './components/emp-details/emp-details.compon
     NavbarmanagerComponent,
     SignupformComponent,
     RegUsersComponent,
-    EmpDetailsComponent
+    EmpDetailsComponent,
+    JobDetailsComponent,
+    ViewjobComponent,
+    JobuserviewComponent
   ],
   imports: [
     BrowserModule,
