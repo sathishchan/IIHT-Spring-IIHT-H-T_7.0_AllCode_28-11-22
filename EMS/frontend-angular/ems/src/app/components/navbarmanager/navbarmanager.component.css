@@ -1,3 +1,11 @@
 .nav-item {
     font-weight: bold;
 }
+.blk{
+    font-weight: 300;
+}
+
+.logout_btn{
+    color: green;
+    cursor: pointer;
+}

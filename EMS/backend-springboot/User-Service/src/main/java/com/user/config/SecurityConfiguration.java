@@ -68,6 +68,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.antMatchers("/getemp/{id}")
 		.permitAll()
+		.antMatchers("/getjobs/{id}")
+		.permitAll()
 		.antMatchers("/availablejobs")
 		.permitAll()
 		.antMatchers("/createjobs")

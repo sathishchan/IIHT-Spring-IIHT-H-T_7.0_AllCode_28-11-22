@@ -8,34 +8,42 @@ border-style:groove;">
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li style="color:rgb(255, 255, 255);" class="nav-item">
+        <!-- <li style="color:rgb(255, 255, 255);" class="nav-item">
           <a style="color: green;" class="nav-link active" routerLink="home" aria-current="page" href="#" *ngIf="LoggeduserRole != undefined ">Home</a>
-        </li>
-        <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="loginform" href="#" *ngIf="LoggeduserRole != undefined ">Login in</a>
+        </li> -->
+        <!-- <li class="nav-item">
+            <a style="color: green;" class="nav-link" routerLink="loginform" href="#">Login in</a>
+          </li> -->
+          <!-- <li class="nav-item">
+            <a style="color: green;" class="nav-link" routerLink="signupform" href="#" *ngIf="LoggeduserRole != undefined ">Sign up</a>
+          </li> -->
+          <li class="nav-item">
+            <a style="color: green;" class="nav-link" routerLink="reguser" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'">Registered Users</a>
           </li>
           <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="signupform" href="#" *ngIf="LoggeduserRole == undefined ">Sign up</a>
+            <a style="color: green;" class="nav-link" routerLink="empdetails" href="#" *ngIf="LoggeduserRole != undefined && (LoggeduserRole == 'manager' || LoggeduserRole == 'user')">Employee Details</a>
           </li>
           <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="reguser" href="#">Registered Users</a>
+            <a style="color: green;" class="nav-link" routerLink="jobdetails" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'">Create Job</a>
           </li>
           <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="empdetails" href="#">Employee Details</a>
+            <a style="color: green;" class="nav-link" routerLink="viewjobs" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'">View Job</a>
           </li>
           <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="jobdetails" href="#">Create Job</a>
+            <a style="color: green;" class="nav-link" routerLink="jobuserview" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'user'">UserView Job</a>
           </li>
           <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="viewjobs" href="#">View Job</a>
-          </li>
-          <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="jobuserview" href="#">UserView Job</a>
+            <a style="color: green;" class="nav-link" routerLink="profile" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'user'">My Profile</a>
           </li>
       </ul>
+      <div class="" *ngIf="Loggedusername != undefined && LoggeduserRole != undefined">
+        <p class="blk">{{Loggedusername}} | {{LoggeduserRole}}</p>
+        <a class="logout_btn" (click)="logout()">Logout</a> 
+      </div>
     </div>
   </div>
 </nav>
+
 
 
 

@@ -34,6 +34,11 @@ public class JobsService implements IJobsService {
 	public List<Jobs> getAllJobs() {
 		return jobsRepo.findAll();
 	}
+	
+	@Override
+	public List<Jobs> getallrolejobs(String role) {
+		return jobsRepo.findByApplicablerole(role);
+	}
 
 	//update jobs
 	@Override
@@ -64,7 +69,7 @@ public class JobsService implements IJobsService {
 		if(jobs.getStatus().equals(Status.aborted)) {
 			LocalDateTime tempDateTime = LocalDateTime.from(existingjobsmodule.getJobstarttime());
 			long minutes = tempDateTime.until(LocalDateTime.now(), ChronoUnit.MINUTES);
-			if(minutes <=5) {
+			if(minutes <=1) {
 				jobs.setStatus(Status.notstarted);
 			}
 		}
@@ -87,17 +92,13 @@ public class JobsService implements IJobsService {
 			starttime=jobdata.getStartingtime();
 			break;
 		}
-		if (endtime.isBefore(starttime)) {
+		if (endtime.isAfter(starttime)) {
 			return true;
 		}
 		
 		return false;
 	}
 
-	@Override
-	public List<Jobs> getallrolejobs(String role) {
-		return jobsRepo.findByApplicablerole(role);
-	}
 
 	//get jobs by Id
 	@Override

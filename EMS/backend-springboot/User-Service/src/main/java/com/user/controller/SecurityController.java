@@ -4,6 +4,7 @@ package com.user.controller;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -133,14 +134,29 @@ public class SecurityController {
 	  return  this.restTemplate.getForObject(url,List.class);
     }
 	
-	//get employee by id
+//	//get employee by id
+//	@GetMapping("/getemp/{id}")
+//    public Optional<Employee> getEmployee(@PathVariable Long id){
+//		//Employee objemp = new Employee();
+//		//objemp.getJob();
+//	  String url ="http://EmployeeService/get/";
+//		 return this.restTemplate.getForObject(url+id,Optional.class);
+//    }
+	
 	@GetMapping("/getemp/{id}")
-    public Optional<Employee> getEmployee(@PathVariable Long id){
-		//Employee objemp = new Employee();
-		//objemp.getJob();
-	  String url ="http://EmployeeService/get/";
-		 return this.restTemplate.getForObject(url+id,Optional.class);
-    }
+	public List<Employee> getEmployee(@PathVariable Long id) {
+		String url ="http://EmployeeService/get/";
+		Optional<Employee> empdata= this.restTemplate.getForObject(url+id, Optional.class);
+		List<Employee> newgetIdData = empdata.stream().collect(Collectors.toList());
+		return newgetIdData;
+	}
+	
+	//get jobs by id
+	@GetMapping("/getjobs/{id}")
+	public Optional<Jobs> getJobs(@PathVariable Long id) {
+		String url="http://JobsModule/getjob/"; 
+		return this.restTemplate.getForObject(url+id, Optional.class);
+	}
 	
 	//get jobs
 	@GetMapping("/availablejobs")

@@ -31,12 +31,13 @@ export class LoginformComponent implements OnInit {
 
         alert("Successfully login");
         if(response.role == 'manager'){
+          // alert("role: "+response.role);
           this.router.navigateByUrl('/reguser')
 
         }
         else{
-          alert("role: "+response.role);
-          this.router.navigateByUrl('/home')
+          // alert("role: "+response.role);
+          this.router.navigateByUrl('/jobuserview')
         }
       }, function(error) {
         console.log(error);
@@ -52,6 +53,7 @@ export class LoginformComponent implements OnInit {
   constructor(private userService : UserService,private router:Router ) { }
 
   ngOnInit(): void {
+    sessionStorage.clear();
   }
 
 }

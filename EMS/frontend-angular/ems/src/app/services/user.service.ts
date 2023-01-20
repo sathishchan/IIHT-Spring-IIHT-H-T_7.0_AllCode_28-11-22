@@ -9,6 +9,9 @@ const BASE_URL = 'http://localhost:1000';
   providedIn: 'root'
 })
 export class UserService {
+  GetEmpById(userid:number) {
+    return this.http.get(BASE_URL+'/getemp/'+userid)
+  }
 
   //create user details
   saveSignup(signup: {

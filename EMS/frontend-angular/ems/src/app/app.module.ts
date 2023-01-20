@@ -18,6 +18,8 @@ import { EmpDetailsComponent } from './components/emp-details/emp-details.compon
 import { JobDetailsComponent } from './components/job-details/job-details.component';
 import { ViewjobComponent } from './components/viewjob/viewjob.component';
 import { JobuserviewComponent } from './components/jobuserview/jobuserview.component';
+import { SignoutComponent } from './components/signout/signout.component';
+import { MyformComponent } from './components/myform/myform.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { JobuserviewComponent } from './components/jobuserview/jobuserview.compo
     EmpDetailsComponent,
     JobDetailsComponent,
     ViewjobComponent,
-    JobuserviewComponent
+    JobuserviewComponent,
+    SignoutComponent,
+    MyformComponent
   ],
   imports: [
     BrowserModule,

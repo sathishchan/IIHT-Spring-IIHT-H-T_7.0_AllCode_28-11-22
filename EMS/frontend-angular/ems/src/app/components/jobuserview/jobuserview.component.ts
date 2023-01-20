@@ -22,12 +22,20 @@ export class JobuserviewComponent implements OnInit {
 
   
 
+  // GetAllJobs() {
+  //   const promise = this.userService.getJobs();
+  //   promise.subscribe((response) => {
+  //     console.log(response);
+  //     this.Alljobs = response as Job[]; 
+  //     this.jobs=this.Alljobs.filter(obj=>obj.status == 'notstarted');
+  //   })
+  // }
+
   GetAllJobs() {
     const promise = this.userService.getJobs();
     promise.subscribe((response) => {
       console.log(response);
-      this.Alljobs = response as Job[]; 
-      this.jobs=this.Alljobs.filter(obj=>obj.status == 'notstarted');
+      this.jobs = response as Job[]; 
     })
   }
 
@@ -54,6 +62,46 @@ export class JobuserviewComponent implements OnInit {
       // this.jobs=this.Alljobs.filter(obj=>obj.status == 'notstarted');
     })
   }
+
+CompletedJob(jobdata: any) {
+  let userid=sessionStorage.getItem('id')
+  let jobobj={};
+  jobobj["id"]=jobdata.id
+  jobobj["status"]="completed"
+  jobobj["profitvalue"]=jobdata.profitvalue
+  jobobj["applicablerole"]=jobdata.applicablerole
+  const promise = this.userService.updateUserJobStatus(userid,jobobj);
+  promise.subscribe((response) => {
+    console.log(response);
+    if(response["status"] == "Success") {
+      alert("Job Completed Successfully");
+      this.GetAllJobs();
+    }
+    else {
+      alert("unable to complete");
+    }
+  })
+}
+
+AbortedJob(jobdata: any) {
+  let userid=sessionStorage.getItem('id')
+  let jobobj={};
+  jobobj["id"]=jobdata.id
+  jobobj["status"]="aborted"
+  jobobj["applicablerole"]=jobdata.applicablerole
+  const promise = this.userService.updateUserJobStatus(userid,jobobj);
+  promise.subscribe((response) => {
+    console.log(response);
+    if(response["status"] == "Success") {
+      alert("Job Aborted Successfully");
+      this.GetAllJobs();
+    }
+    else {
+      alert("unable to aborte");
+    }
+  })
+}
+
   ngOnInit(): void {
     this.GetAllJobs();
   }
