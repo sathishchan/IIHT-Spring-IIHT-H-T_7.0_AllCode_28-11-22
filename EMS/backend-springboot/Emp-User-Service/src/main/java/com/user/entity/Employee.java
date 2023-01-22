@@ -17,8 +17,10 @@ public class Employee {
 	private String email;
 	private Long salary;
 	private String job;
+	private Long jobid;
 	
-	public Employee(Long empid, Long userid, String firstname, String lastname, String email, Long salary, String job) {
+	public Employee(Long empid, Long userid, String firstname, String lastname, String email, Long salary, String job,
+			Long jobid) {
 		super();
 		this.empid = empid;
 		this.userid = userid;
@@ -27,12 +29,11 @@ public class Employee {
 		this.email = email;
 		this.salary = salary;
 		this.job = job;
+		this.jobid = jobid;
 	}
-	
 	public Employee() {
 		super();
 	}
-	
 	public Long getEmpid() {
 		return empid;
 	}
@@ -74,5 +75,16 @@ public class Employee {
 	}
 	public void setJob(String job) {
 		this.job = job;
+	}
+	public Long getJobid() {
+		return jobid;
+	}
+	public void setJobid(Long jobid) {
+		this.jobid = jobid;
+	}
+	@Override
+	public String toString() {
+		return "Employee [empid=" + empid + ", userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", email=" + email + ", salary=" + salary + ", job=" + job + ", jobid=" + jobid + "]";
 	}
 }

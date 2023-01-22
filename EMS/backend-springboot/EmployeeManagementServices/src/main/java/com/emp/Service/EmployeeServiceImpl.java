@@ -81,8 +81,9 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		System.out.println("--------------------13--------------------");
 		Employee existingEmployee = employeeRepo.findById(empid).orElseThrow(()
 				-> new ResourceNotFoundException("Employee","id",id));
-		if(!(employee.getJob()==null) &&! (employee.getJob()=="")) {
+		if(!(employee.getJob()==null) && !(employee.getJob()=="")) {
 			existingEmployee.setJob(employee.getJob());
+			existingEmployee.setJobid(employee.getJobid());
 			System.out.println("--------------------14--------------------");
 		}
 		if(!(employee.getSalary()==null)) {
@@ -93,6 +94,10 @@ public class EmployeeServiceImpl implements IEmployeeService{
 			totalsaly=totalsaly+employee.getSalary();
 			
 		existingEmployee.setSalary(totalsaly);
+		}
+		if(employee.getJob() == null) {
+			existingEmployee.setJob(null);
+			existingEmployee.setJobid(null);
 		}
 		System.out.println("--------------------15--------------------");
 		employeeRepo.save(existingEmployee);

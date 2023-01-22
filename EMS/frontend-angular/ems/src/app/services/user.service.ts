@@ -10,7 +10,7 @@ const BASE_URL = 'http://localhost:1000';
 })
 export class UserService {
   GetEmpById(userid:number) {
-    return this.http.get(BASE_URL+'/getemp/'+userid)
+    return this.http.get(BASE_URL+'/getemployee/'+userid)
   }
 
   //create user details

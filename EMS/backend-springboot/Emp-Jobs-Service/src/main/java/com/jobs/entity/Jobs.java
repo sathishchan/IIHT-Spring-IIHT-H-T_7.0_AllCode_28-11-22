@@ -48,6 +48,13 @@ public class Jobs {
 		super();
 	}
 	
+	public Jobs(long id, String jobname, long profitvalue, String applicablerole, Status status) {
+		this.id = id;
+		this.jobname = jobname;
+		this.profitvalue = profitvalue;
+		this.applicablerole = applicablerole;
+		this.status = status;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -96,12 +103,15 @@ public class Jobs {
 	public void setJobstarttime(LocalDateTime jobstarttime) {
 		this.jobstarttime = jobstarttime;
 	}
+	
 	@Override
 	public String toString() {
 		return "Jobs [id=" + id + ", jobname=" + jobname + ", startingtime=" + startingtime + ", endtime=" + endtime
 				+ ", profitvalue=" + profitvalue + ", applicablerole=" + applicablerole + ", status=" + status
 				+ ", jobstarttime=" + jobstarttime + "]";
 	}
+	
+	
 
 
 }

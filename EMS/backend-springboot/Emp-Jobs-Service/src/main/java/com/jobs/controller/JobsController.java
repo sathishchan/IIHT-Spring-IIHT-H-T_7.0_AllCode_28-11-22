@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jobs.entity.Jobs;
 import com.jobs.service.IJobsService;
 
+
 @RestController
 public class JobsController {
 	
 	@Autowired
 	private IJobsService iJobsService;
+	
+	
 	
 	@PostMapping("/add/Jobs")
 	public Long createJobs(@RequestBody Jobs jobs) {

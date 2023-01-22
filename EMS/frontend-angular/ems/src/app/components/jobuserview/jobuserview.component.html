@@ -1,11 +1,20 @@
 <div class="container-fluid ps-md-0 custom" class="p-3">
-    <div class="text-center pt-2">
-        <h2 class="fs-5 text-decoration-underline">Jobs Available</h2>
+    <div class="pt-2 text-center">
+
+        <h2 class="fs-5 text-decoration-underline " *ngIf="!ShowAssignedJob">Jobs Available</h2>
+        <h2 class="fs-5 text-decoration-underline " *ngIf="ShowAssignedJob">My Assigned Job</h2>
+        <button class="btn btn-success" (click)="toggleScreen()">{{ShowAssignedJob ? 'View Jobs' : 'My Job'}}</button>
+        <br> <br>
+
+
+
+
+
     </div>
     <!--<div class="text-end p-2">
         <button type="button"  class="btn btn-outline-info">Refresh</button>
     </div>-->
-    <div class="container-fluid tableFixHead">
+    <div class="container-fluid tableFixHead" *ngIf="!ShowAssignedJob">
         <table class="table table-striped align-middle">
             <thead>
                 <tr class="fs-6">
@@ -28,21 +37,38 @@
                     <td>{{j.profitvalue}}</td>
                     <td>{{j.applicablerole}}</td>
                     <td>{{j.status | uppercase}}</td>
-                    
+
                     <td>
-                        
-                    <button type="button"(click)="AssignJob(j)"  class="btn btn-warning">Assign</button>
-                    <button type="button"(click)="CompletedJob(j)"  class="btn btn-success">Completed</button>
-                    <button type="button"(click)="AbortedJob(j)"  class="btn btn-danger">Aborted</button>
+
+                        <button type="button" (click)="AssignJob(j)" class="btn btn-warning">Assign</button>
+
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <div class="flex-container" *ngIf="ShowAssignedJob">
+        <!-- <div class="ms-2 me-auto" *ngIf="ShowAssignedJob"> -->
+        <ng-container *ngIf="Job?.id != undefined">
+            <div class="fw"><span class="fw-bold">Job Id:</span> {{Job.id}} <br> <br>
+                <span class="fw-bold">Job Name:</span> {{Job.jobname}} <br> <br>
+                <span class="fw-bold">Profit Value:</span> {{Job.profitvalue}} <br> <br>
+                <span class="fw-bold">Status:</span> {{Job.status}}
+             <br> <br>
+
+            <button type="button" (click)="CompletedJob(Job)" class="btn btn-success"
+                *ngIf="Job?.status == 'inprogress'">Complete</button> &nbsp; &nbsp;
+            <button type="button" (click)="AbortedJob(Job)" class="btn btn-danger"
+                *ngIf="Job?.status == 'inprogress'">Abort</button> </div>
+
+        </ng-container>
+        <ng-container *ngIf="Job == undefined || Job?.id == undefined">
+            <div><p>Seems No jobs are assigned to you, Please assign job from the view Jobs.</p></div>
+        </ng-container>
+
+    </div>
+
 </div>
 
-
-
-
-
+<!-- </div> -->

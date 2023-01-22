@@ -7,9 +7,17 @@ public class Responseobject {
 
 	private String status;
 	private String statuscode;
-//	private Dictionary<Object,Object> responseData;
+	private Dictionary<Object,Object> responseData;
 //	private Long id;
 	
+	public Dictionary<Object, Object> getResponseData() {
+		return responseData;
+	}
+
+	public void setResponseData(Dictionary<Object, Object> responseData) {
+		this.responseData = responseData;
+	}
+
 	public Responseobject(String status, String statuscode) {
 		super();
 		this.status = status;

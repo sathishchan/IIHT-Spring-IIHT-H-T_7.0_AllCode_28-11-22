@@ -1,8 +1,11 @@
-<div class="ms-2 me-auto" *ngIf="Employee != undefined">
-    <div class="fw"><span class="fw-bold">Emp Id:</span> {{Employee.userid}} </div>
-    <div class="fw"><span class="fw-bold">First Name:</span> {{Employee.firstname}} &nbsp; <span class="fw-bold">Last
-        Name:</span> {{Employee.lastname}} &nbsp; <span class="fw-bold">Email Id:</span> {{Employee.email}} &nbsp; <span class="fw-bold">Salary:</span> {{Employee.salary}} &nbsp; <span class="fw-bold">Allocated
-          Job:</span> {{Employee.job}}</div>
-    
+<div class="flex-container" *ngIf="Employee != undefined">
+  <!-- <div class="ms-2 me-auto" *ngIf="Employee != undefined"> -->
+    <div class="fw"> <span class="fw-bold">Emp Id:</span> {{Employee.userid}}  <br> <br>
+     <span class="fw-bold">First Name:</span> {{Employee.firstname}}  <br> <br>
+     <span class="fw-bold">Last Name:</span> {{Employee.lastname}}  <br> <br>
+     <span class="fw-bold">Email Id:</span> {{Employee.email}}  <br> <br>
+     <span class="fw-bold">Salary:</span> {{Employee.salary}}  <br> <br>
+     <span class="fw-bold">Allocated Job:</span> {{Employee.job}}</div> 
 
-  </div>
+<!-- </div> -->
+</div>

@@ -21,7 +21,7 @@ border-style:groove;">
             <a style="color: green;" class="nav-link" routerLink="reguser" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'">Registered Users</a>
           </li>
           <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="empdetails" href="#" *ngIf="LoggeduserRole != undefined && (LoggeduserRole == 'manager' || LoggeduserRole == 'user')">Employee Details</a>
+            <a style="color: green;" class="nav-link" routerLink="empdetails" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'">Employee Details</a>
           </li>
           <li class="nav-item">
             <a style="color: green;" class="nav-link" routerLink="jobdetails" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'">Create Job</a>
@@ -30,15 +30,15 @@ border-style:groove;">
             <a style="color: green;" class="nav-link" routerLink="viewjobs" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'">View Job</a>
           </li>
           <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="jobuserview" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'user'">UserView Job</a>
+            <a style="color: green;" class="nav-link" routerLink="profile" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'user'">My Profile</a>
           </li>
           <li class="nav-item">
-            <a style="color: green;" class="nav-link" routerLink="profile" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'user'">My Profile</a>
+            <a style="color: green;" class="nav-link" routerLink="jobuserview" href="#" *ngIf="LoggeduserRole != undefined && LoggeduserRole == 'user'">My Job</a>
           </li>
       </ul>
       <div class="" *ngIf="Loggedusername != undefined && LoggeduserRole != undefined">
-        <p class="blk">{{Loggedusername}} | {{LoggeduserRole}}</p>
-        <a class="logout_btn" (click)="logout()">Logout</a> 
+        <p class="fw-bold">{{Loggedusername}} | {{LoggeduserRole}}</p> &nbsp; &nbsp; &nbsp;
+        <a class="logout_btn" (click)="logout()"> Logout</a> 
       </div>
     </div>
   </div>
@@ -47,5 +47,6 @@ border-style:groove;">
 
 
 
-<!--(RegisteredUsers)*ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'"
+<!--*ngIf="LoggeduserRole != undefined && (LoggeduserRole == 'manager' || LoggeduserRole == 'user')"
+  (RegisteredUsers)*ngIf="LoggeduserRole != undefined && LoggeduserRole == 'manager'"
 (EmployeeDetails)*ngIf="LoggeduserRole != undefined "-->

@@ -15,29 +15,56 @@ export class JobuserviewComponent implements OnInit {
   job: Job = new Job();
   jobs : Job[] = [];
   Alljobs : Job[] = [];
-  
+  ShowAssignedJob:boolean=false;
+  Job: any;
 
 
   constructor(private userService:UserService,private router:Router) { }
-
+  ngOnInit(): void {
+    this.GetAllJobs();
+    this.GetEmployeeById();
+  }
   
-
-  // GetAllJobs() {
-  //   const promise = this.userService.getJobs();
-  //   promise.subscribe((response) => {
-  //     console.log(response);
-  //     this.Alljobs = response as Job[]; 
-  //     this.jobs=this.Alljobs.filter(obj=>obj.status == 'notstarted');
-  //   })
-  // }
 
   GetAllJobs() {
     const promise = this.userService.getJobs();
     promise.subscribe((response) => {
       console.log(response);
-      this.jobs = response as Job[]; 
+      this.Alljobs = response as Job[]; 
+      this.jobs=this.Alljobs.filter(obj=>obj.status == 'notstarted');
     })
   }
+
+  GetEmployeeById(){
+    let userid=parseInt(sessionStorage.getItem('id'))
+    const promise = this.userService.GetEmpById(userid);
+    promise.subscribe((response) => {
+      // this.Employee=response["responseData"]["employee"];
+      if(response["responseData"]["job"] != undefined ){
+        this.Job=response["responseData"]["job"];
+        console.log(this.Job)
+      }
+      if(response["responseData"]["job"] == undefined){
+        this.Job=undefined
+      }
+      
+      this.ShowAssignedJob=true;
+
+      console.log(response);
+    });
+  }
+
+  toggleScreen(){
+    this.ShowAssignedJob=this.ShowAssignedJob ? false:true;
+    this.ShowAssignedJob ? this.GetEmployeeById() : this.GetAllJobs();
+  }
+  // GetAllJobs() {
+  //   const promise = this.userService.getJobs();
+  //   promise.subscribe((response) => {
+  //     console.log(response);
+  //     this.jobs = response as Job[]; 
+  //   })
+  // }
 
   AssignJob(jobdata: any){
     let userid=sessionStorage.getItem('id')
@@ -76,6 +103,7 @@ CompletedJob(jobdata: any) {
     if(response["status"] == "Success") {
       alert("Job Completed Successfully");
       this.GetAllJobs();
+      this.GetEmployeeById();
     }
     else {
       alert("unable to complete");
@@ -95,6 +123,7 @@ AbortedJob(jobdata: any) {
     if(response["status"] == "Success") {
       alert("Job Aborted Successfully");
       this.GetAllJobs();
+      this.GetEmployeeById();
     }
     else {
       alert("unable to aborte");
@@ -102,8 +131,6 @@ AbortedJob(jobdata: any) {
   })
 }
 
-  ngOnInit(): void {
-    this.GetAllJobs();
-  }
+  
 
 }

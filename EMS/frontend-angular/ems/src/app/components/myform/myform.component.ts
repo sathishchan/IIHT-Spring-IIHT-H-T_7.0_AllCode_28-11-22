@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MyformComponent implements OnInit {
 Employee:any;
+Job:any;
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
@@ -18,7 +19,12 @@ Employee:any;
     let userid=parseInt(sessionStorage.getItem('id'))
     const promise = this.userService.GetEmpById(userid);
     promise.subscribe((response) => {
-      this.Employee=response[0];
+      this.Employee=response["responseData"]["employee"];
+      if(response["responseData"]["job"] != undefined ){
+        this.Job=response["responseData"]["job"];
+        console.log(this.Job)
+      }
+
       console.log(response);
     });
   }

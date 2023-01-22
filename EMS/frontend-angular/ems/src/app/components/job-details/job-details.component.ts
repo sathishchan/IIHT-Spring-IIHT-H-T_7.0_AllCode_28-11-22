@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import Job from 'src/app/Entity/job';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./job-details.component.css']
 })
 export class JobDetailsComponent implements OnInit {
+  userForm:FormGroup;
 
   onSubmit(data: any) {
     console.log(data);
@@ -36,10 +39,15 @@ export class JobDetailsComponent implements OnInit {
  
     const observables = this.userService.saveJob
     (this.job);
+    console.log(this.job)
+    // console.log(this.userForm)
+    
     observables.subscribe (
       (response:any) => {
         console.log(response);
-        alert("Submitted Successfully");
+        
+        alert("Job Created Successfully");
+        this.router.navigateByUrl('/viewjobs')
       }, function(error) {
         console.log(error);
         alert("Something went wrong, Please try again!")
@@ -47,7 +55,7 @@ export class JobDetailsComponent implements OnInit {
     )
   }
 
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService, private router:Router) { }
 
   ngOnInit(): void {
   }

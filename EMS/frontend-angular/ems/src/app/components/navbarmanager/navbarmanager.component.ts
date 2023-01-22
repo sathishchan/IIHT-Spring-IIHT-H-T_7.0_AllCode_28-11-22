@@ -20,6 +20,7 @@ Loggedusername:string;
     this.LoggeduserRole=undefined;
     this.Loggedusername=undefined;
     sessionStorage.clear()
+    alert("Logged out Successfully");
     this.router.navigateByUrl('/loginform')
     
   }

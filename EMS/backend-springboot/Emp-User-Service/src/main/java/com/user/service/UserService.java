@@ -104,6 +104,7 @@ public class UserService implements IUserService {
 					String url1 = "http://EmployeeService/updateJobSalary/"+userid;
 					Employee employeedata = new Employee();
 					employeedata.setJob(jobs.getJobname());
+					employeedata.setJobid(jobs.getId());
 					restTemplate.put(url1, employeedata);
 					System.out.println("---------------------------5.0---------------------------");
 				}
@@ -119,7 +120,8 @@ public class UserService implements IUserService {
 			else if(jobs.getStatus().equals("aborted")) {
 				String url1 = "http://EmployeeService/updateJobSalary/"+userid;
 				Employee employeedata = new Employee();
-				employeedata.setJob(jobs.getJobname());
+				employeedata.setJob(null);
+				employeedata.setJobid(null);
 				restTemplate.put(url1, employeedata);
 			}
 			System.out.println("---------------------------5.1---------------------------");

@@ -80,6 +80,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.antMatchers("/getUserJob/user/{userid}")
 		.permitAll()
+		.antMatchers("/getemployee/{id}")
+		.permitAll()
 		.anyRequest()
 		.authenticated()
 		.and() 

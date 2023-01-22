@@ -1,7 +1,8 @@
 package com.user.controller;
 
 
-import java.time.LocalTime;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -108,17 +109,6 @@ public class SecurityController {
 		return responseEntity;
 	}
 	
-	//update user
-	@PutMapping("/update/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-		 String url ="http://EmployeeService/update/"+id;
-		    Employee employeedata= new Employee();
-			employeedata.setEmail(user.getEmail());
-			employeedata.setFirstname(user.getFirstname());
-			employeedata.setLastname(user.getLastname());
-			this.restTemplate.put(url, user);
-		return new ResponseEntity<User>(userService.updateUserDetail(user, id), HttpStatus.OK);
-	}
 
 	//Registered users
 	@GetMapping("/allusers")
@@ -135,13 +125,25 @@ public class SecurityController {
     }
 	
 //	//get employee by id
-//	@GetMapping("/getemp/{id}")
-//    public Optional<Employee> getEmployee(@PathVariable Long id){
-//		//Employee objemp = new Employee();
-//		//objemp.getJob();
-//	  String url ="http://EmployeeService/get/";
-//		 return this.restTemplate.getForObject(url+id,Optional.class);
-//    }
+	@GetMapping("/getemployee/{id}")
+    public Responseobject getEmployeebyId(@PathVariable Long id){
+
+		Dictionary empjobdata = new Hashtable();
+		Responseobject responsedata = new Responseobject();
+	  String url ="http://EmployeeService/get/";
+		 Employee emp= this.restTemplate.getForObject(url+id,Employee.class);
+
+		 if(emp.getJobid() != null && emp.getJobid() != 0) {
+			 String url1="http://JobsModule/getjob/";
+				Jobs jobdata= this.restTemplate.getForObject(url1+emp.getJobid(), Jobs.class);
+				 empjobdata.put("job",jobdata);
+
+		 }
+		 empjobdata.put("employee",emp);
+		 responsedata.setStatus("Success");
+		 responsedata.setResponseData(empjobdata);
+		 return responsedata;
+    }
 	
 	@GetMapping("/getemp/{id}")
 	public List<Employee> getEmployee(@PathVariable Long id) {
@@ -165,6 +167,7 @@ public class SecurityController {
 		return this.restTemplate.getForObject(url, List.class);
 	}
 	
+	
 	//create jobs
 	@PostMapping("/createjobs")
 	public ResponseEntity<?> createJobs(@RequestBody Jobs jobs) {
@@ -182,9 +185,9 @@ public class SecurityController {
 		 this.restTemplate.put(url, jobs);
 		 }
 		 catch (Exception e) {
-			 return new ResponseEntity<>("Fail",HttpStatus.BAD_REQUEST);
+			 return new ResponseEntity<>(new Responseobject("Failure","201"), HttpStatus.OK);
 		}
-		 return new ResponseEntity<>("Success",HttpStatus.OK);
+		 return new ResponseEntity<>(new Responseobject("Success","200"), HttpStatus.OK);
 	}
 	
 	@PutMapping("/updateJobAndSalary/user/{userid}")
@@ -196,22 +199,12 @@ public class SecurityController {
 //			return new ResponseEntity<>("Success",HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>(new Responseobject("Failure","400"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new Responseobject("Failure","201"), HttpStatus.OK);
 
 //			return new ResponseEntity<>("Fail",HttpStatus.BAD_REQUEST);
 
 		}
 	}
-	
-	
-//	@GetMapping("/getUserJob/user/{userid}")
-//	public Optional getAssignedUserJob(@PathVariable("userid") Long userid) {
-//		System.out.println("----------1234----------------"+userid);
-//		String url ="http://EmployeeService/jobcheck/{id}";
-//		  return this.restTemplate.getForObject(url+userid,Optional.class);
-//			}
-	
-
 	
 
 }
