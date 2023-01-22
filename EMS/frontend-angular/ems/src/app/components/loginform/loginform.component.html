@@ -19,7 +19,7 @@
             <div class="form-group">
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">password</span>
-                    <input required [(ngModel)]="login.password" pattern="[A-Za-z0-9\d$@ ]*"  #password="ngModel" minlength="2" maxlength="20" name="password"
+                    <input required [(ngModel)]="login.password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$" #password="ngModel" minlength="6" maxlength="20" name="password"
                         type="password" ngModel class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-sm" placeholder="Enter a password">
                         <span Style="margin-left:20px;" *ngIf="password.invalid && password.touched" id="inputGroup-sizing-sm" class="error">*password is not valid</span>   
