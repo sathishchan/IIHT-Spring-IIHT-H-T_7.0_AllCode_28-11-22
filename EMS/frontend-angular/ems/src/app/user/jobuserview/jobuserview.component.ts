@@ -21,12 +21,12 @@ export class JobuserviewComponent implements OnInit {
 
   constructor(private userService:UserService,private router:Router) { }
   ngOnInit(): void {
-    this.GetAllJobs();
-    this.GetEmployeeById();
+    this.getAllJobs();
+    this.getEmployeeById();
   }
   
 
-  GetAllJobs() {
+  getAllJobs() {
     const promise = this.userService.getJobs();
     promise.subscribe((response) => {
       console.log(response);
@@ -35,9 +35,9 @@ export class JobuserviewComponent implements OnInit {
     })
   }
 
-  GetEmployeeById(){
+  getEmployeeById(){
     let userid=parseInt(sessionStorage.getItem('id'))
-    const promise = this.userService.GetEmpById(userid);
+    const promise = this.userService.getEmpById(userid);
     promise.subscribe((response) => {
       // this.Employee=response["responseData"]["employee"];
       if(response["responseData"]["job"] != undefined ){
@@ -56,9 +56,9 @@ export class JobuserviewComponent implements OnInit {
 
   toggleScreen(){
     this.ShowAssignedJob=this.ShowAssignedJob ? false:true;
-    this.ShowAssignedJob ? this.GetEmployeeById() : this.GetAllJobs();
+    this.ShowAssignedJob ? this.getEmployeeById() : this.getAllJobs();
   }
-  // GetAllJobs() {
+  // getAllJobs() {
   //   const promise = this.userService.getJobs();
   //   promise.subscribe((response) => {
   //     console.log(response);
@@ -66,7 +66,7 @@ export class JobuserviewComponent implements OnInit {
   //   })
   // }
 
-  AssignJob(jobdata: any){
+  assignJob(jobdata: any){
     let userid=sessionStorage.getItem('id')
     let jobobj={};
     jobobj["id"]=jobdata.id
@@ -78,7 +78,7 @@ export class JobuserviewComponent implements OnInit {
       console.log(response);
       if(response["status"] == "Success"){
         alert("Job assigned successfully");
-        this.GetAllJobs();
+        this.getAllJobs();
 
       }
       else{
@@ -90,7 +90,7 @@ export class JobuserviewComponent implements OnInit {
     })
   }
 
-CompletedJob(jobdata: any) {
+completedJob(jobdata: any) {
   let userid=sessionStorage.getItem('id')
   let jobobj={};
   jobobj["id"]=jobdata.id
@@ -102,8 +102,8 @@ CompletedJob(jobdata: any) {
     console.log(response);
     if(response["status"] == "Success") {
       alert("Job Completed Successfully");
-      this.GetAllJobs();
-      this.GetEmployeeById();
+      this.getAllJobs();
+      this.getEmployeeById();
     }
     else {
       alert("unable to complete");
@@ -111,7 +111,7 @@ CompletedJob(jobdata: any) {
   })
 }
 
-AbortedJob(jobdata: any) {
+abortedJob(jobdata: any) {
   let userid=sessionStorage.getItem('id')
   let jobobj={};
   jobobj["id"]=jobdata.id
@@ -122,8 +122,8 @@ AbortedJob(jobdata: any) {
     console.log(response);
     if(response["status"] == "Success") {
       alert("Job Aborted Successfully");
-      this.GetAllJobs();
-      this.GetEmployeeById();
+      this.getAllJobs();
+      this.getEmployeeById();
     }
     else {
       alert("unable to aborte");

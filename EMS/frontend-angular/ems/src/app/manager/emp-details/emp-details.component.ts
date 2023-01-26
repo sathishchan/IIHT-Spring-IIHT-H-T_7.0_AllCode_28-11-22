@@ -16,7 +16,7 @@ export class EmpDetailsComponent implements OnInit {
 
   constructor(private userService : UserService) { }
 
-  GetAllEmployees() {
+  getAllEmployees() {
     const promise = this.userService.getEmpDetails();
     promise.subscribe((response) => {
       console.log(response);
@@ -42,7 +42,7 @@ export class EmpDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.GetAllEmployees();
+    this.getAllEmployees();
   }
 
 }

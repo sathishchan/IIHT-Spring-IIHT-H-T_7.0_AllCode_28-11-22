@@ -13,13 +13,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { SignupformComponent } from './components/signupform/signupform.component';
 import {HttpClientModule} from '@angular/common/http';
-import { RegUsersComponent } from './components/reg-users/reg-users.component';
-import { EmpDetailsComponent } from './components/emp-details/emp-details.component';
-import { JobDetailsComponent } from './components/job-details/job-details.component';
-import { ViewjobComponent } from './components/viewjob/viewjob.component';
-import { JobuserviewComponent } from './components/jobuserview/jobuserview.component';
-import { SignoutComponent } from './components/signout/signout.component';
-import { MyformComponent } from './components/myform/myform.component';
+
 
 
 @NgModule({
@@ -29,15 +23,7 @@ import { MyformComponent } from './components/myform/myform.component';
     FooterComponent,
     LoginformComponent,
     NavbarmanagerComponent,
-    SignupformComponent,
-    RegUsersComponent,
-    EmpDetailsComponent,
-    JobDetailsComponent,
-    ViewjobComponent,
-    JobuserviewComponent,
-    SignoutComponent,
-    MyformComponent
-  ],
+    SignupformComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

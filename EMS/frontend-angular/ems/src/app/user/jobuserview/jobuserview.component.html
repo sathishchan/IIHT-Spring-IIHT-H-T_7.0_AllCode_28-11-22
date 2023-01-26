@@ -40,7 +40,7 @@
 
                     <td>
 
-                        <button type="button" (click)="AssignJob(j)" class="btn btn-warning">Assign</button>
+                        <button type="button" (click)="assignJob(j)" class="btn btn-warning">Assign</button>
 
                     </td>
                 </tr>
@@ -57,9 +57,9 @@
                 <span class="fw-bold">Status:</span> {{Job.status}}
              <br> <br>
 
-            <button type="button" (click)="CompletedJob(Job)" class="btn btn-success"
+            <button type="button" (click)="completedJob(Job)" class="btn btn-success"
                 *ngIf="Job?.status == 'inprogress'">Complete</button> &nbsp; &nbsp;
-            <button type="button" (click)="AbortedJob(Job)" class="btn btn-danger"
+            <button type="button" (click)="abortedJob(Job)" class="btn btn-danger"
                 *ngIf="Job?.status == 'inprogress'">Abort</button> </div>
 
         </ng-container>

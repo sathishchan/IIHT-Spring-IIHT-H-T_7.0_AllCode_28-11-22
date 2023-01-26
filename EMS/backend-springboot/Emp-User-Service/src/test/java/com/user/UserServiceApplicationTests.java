@@ -12,10 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
 import com.user.entity.User;
 import com.user.model.Role;
 import com.user.repo.IUserRepo;
 import com.user.service.IUserService;
+
+
 
 @SpringBootTest
 class UserServiceApplicationTests {
@@ -50,7 +53,7 @@ class UserServiceApplicationTests {
 	}
 	
 	@Test
-	public void getUserByNameTest() {
+	public void getUserByName() {
 		User userobj = new User(1L,"sathish","kumar","satz@gmail.com","Sathish","Satz@123",Role.manager);
 		String user = "sathish";
 		when(this.iUserRepo.findByUsername(user)).thenReturn(userobj);

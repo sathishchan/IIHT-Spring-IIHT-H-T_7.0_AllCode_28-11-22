@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
-const BASE_URL = 'http://localhost:1000';
+const BASE_URL = 'http://localhost:5000';
+//const BASE_URL = 'http://ec2-100-26-53-204.compute-1.amazonaws.com:5000';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  GetEmpById(userid:number) {
+  getEmpById(userid:number) {
     return this.http.get(BASE_URL+'/getemployee/'+userid)
   }
 

@@ -5,3 +5,8 @@ password :admin123
 RDS-Digital
 username : admin
 password : admin1234
+
+
+RDS-EMP
+username : admin
+password : admin1234

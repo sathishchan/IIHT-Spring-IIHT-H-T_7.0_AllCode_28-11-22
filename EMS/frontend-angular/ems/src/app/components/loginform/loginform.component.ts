@@ -32,12 +32,12 @@ export class LoginformComponent implements OnInit {
         alert("Successfully login");
         if(response.role == 'manager'){
           // alert("role: "+response.role);
-          this.router.navigateByUrl('/reguser')
+          this.router.navigateByUrl('/manager/reguser')
 
         }
-        else{
+        else if(response.role == 'user'){
           // alert("role: "+response.role);
-          this.router.navigateByUrl('/jobuserview')
+          this.router.navigateByUrl('/user/jobuserview')
         }
       }, function(error) {
         console.log(error);

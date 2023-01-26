@@ -18,7 +18,7 @@ export class ViewjobComponent implements OnInit {
 
   constructor(private userService : UserService, private router : Router) { }
 
-  GetAllJobs() {
+  getAllJobs() {
     const promise = this.userService.getJobs();
     promise.subscribe((response) => {
       console.log(response);
@@ -40,7 +40,7 @@ export class ViewjobComponent implements OnInit {
     observables.subscribe((response:any) => {
       console.log(response);
       this.popClose();
-      this.GetAllJobs();
+      this.getAllJobs();
       })
   }
 
@@ -56,7 +56,7 @@ export class ViewjobComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.GetAllJobs();
+    this.getAllJobs();
   }
 
 }

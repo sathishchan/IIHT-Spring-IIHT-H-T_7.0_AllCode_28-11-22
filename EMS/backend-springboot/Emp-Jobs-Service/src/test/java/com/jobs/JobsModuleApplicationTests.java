@@ -63,5 +63,16 @@ class JobsModuleApplicationTests {
 	}
 	
 
+	@Test
+	public void getallroleJobsTest() {
+		Jobs jobs1 = new Jobs(Long.valueOf(1L),"job1",LocalTime.now(),LocalTime.now(),Long.valueOf(500L),"user",Status.notstarted,LocalDateTime.now());
+		Jobs jobs2 = new Jobs(Long.valueOf(2L),"job2",LocalTime.now(),LocalTime.now(),Long.valueOf(100L),"user",Status.inprogress ,LocalDateTime.now());
+		Jobs jobs3 = new Jobs(Long.valueOf(3L),"job3",LocalTime.now(),LocalTime.now(),Long.valueOf(400L),"user",Status.completed,LocalDateTime.now());
+		Jobs jobs4 = new Jobs(Long.valueOf(4L),"job4",LocalTime.now(),LocalTime.now(),Long.valueOf(200L),"user",Status.notstarted,LocalDateTime.now());
+		List<Jobs> listofjobs = List.of(jobs1,jobs2,jobs3,jobs4);
+		when(this.jobsRepo.findByApplicablerole("user")).thenReturn(listofjobs);
+		assertEquals(4,iJobsService.getallrolejobs("user").size());
+	}
+
 }
 

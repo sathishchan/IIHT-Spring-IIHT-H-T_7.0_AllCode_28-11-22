@@ -17,7 +17,7 @@ Job:any;
 
   GetEmployeeById(){
     let userid=parseInt(sessionStorage.getItem('id'))
-    const promise = this.userService.GetEmpById(userid);
+    const promise = this.userService.getEmpById(userid);
     promise.subscribe((response) => {
       this.Employee=response["responseData"]["employee"];
       if(response["responseData"]["job"] != undefined ){

@@ -38,6 +38,7 @@ import com.user.utility.JWTUtility;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
+//@CrossOrigin(origins ="*", allowedHeaders = "*")
 public class SecurityController {
 	
 	@Autowired
@@ -108,6 +109,18 @@ public class SecurityController {
 			}
 		return responseEntity;
 	}
+	
+	//update user
+		@PutMapping("/update/{id}")
+		public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+			 String url ="http://EmployeeService/update/"+id;
+			    Employee employeedata= new Employee();
+				employeedata.setEmail(user.getEmail());
+				employeedata.setFirstname(user.getFirstname());
+				employeedata.setLastname(user.getLastname());
+				this.restTemplate.put(url, user);
+			return new ResponseEntity<User>(userService.updateUserDetail(user, id), HttpStatus.OK);
+		}
 	
 
 	//Registered users

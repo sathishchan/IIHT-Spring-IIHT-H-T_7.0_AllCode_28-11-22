@@ -79,10 +79,7 @@ public class UserService implements IUserService {
 		User existingUser = iUserRepo.findById(userid).orElseThrow(
 				() -> new ResourceNotFoundExceptionHandler("User", "userid", userid));
 		String rolename=existingUser.getRole().toString();
-		//for (Role name :existingUser.getRoles()) {
-	//rolename=name.getName().toString();
-	//break;
-		//}
+	
 		
 		System.out.println("---------------------------2---------------------------");
 		if(rolename.equals(jobs.getApplicablerole())) {
