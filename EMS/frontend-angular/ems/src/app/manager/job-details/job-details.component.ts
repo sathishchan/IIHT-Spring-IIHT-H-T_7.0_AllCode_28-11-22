@@ -47,7 +47,7 @@ export class JobDetailsComponent implements OnInit {
         console.log(response);
         
         alert("Job Created Successfully");
-        this.router.navigateByUrl('/viewjobs')
+        this.router.navigateByUrl('/manager/viewjobs')
       }, function(error) {
         console.log(error);
         alert("Something went wrong, Please try again!")

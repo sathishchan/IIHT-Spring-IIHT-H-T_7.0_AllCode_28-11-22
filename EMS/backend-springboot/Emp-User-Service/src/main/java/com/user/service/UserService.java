@@ -81,29 +81,26 @@ public class UserService implements IUserService {
 		String rolename=existingUser.getRole().toString();
 	
 		
-		System.out.println("---------------------------2---------------------------");
+		
 		if(rolename.equals(jobs.getApplicablerole())) {
-			System.out.println("---------------------------3---------------------------");
 			if(jobs.getStatus().equals("inprogress")) {
 				String url = "http://EmployeeService/jobcheck/"+userid;
 				String currentJob=restTemplate.getForObject(url, String.class); 
-				System.out.println("---------------------------4---------------------------");
 				if(currentJob!=null) {
 					String urljob = "http://JobsModule/jobtimecheck/"+currentJob+"/"+jobs.getJobname();
 					Boolean jobaccess= restTemplate.getForObject(urljob, Boolean.class);
-					
 					if(jobaccess) {
 						return false;
 					}
 				}
-				System.out.println("---------------------------5---------------------------");
+				System.out.println("---------------------------2---------------------------");
 				
 					String url1 = "http://EmployeeService/updateJobSalary/"+userid;
 					Employee employeedata = new Employee();
 					employeedata.setJob(jobs.getJobname());
 					employeedata.setJobid(jobs.getId());
 					restTemplate.put(url1, employeedata);
-					System.out.println("---------------------------5.0---------------------------");
+					System.out.println("---------------------------3---------------------------");
 				}
 			
 			
@@ -121,17 +118,17 @@ public class UserService implements IUserService {
 				employeedata.setJobid(null);
 				restTemplate.put(url1, employeedata);
 			}
-			System.out.println("---------------------------5.1---------------------------");
+			System.out.println("---------------------------4---------------------------");
 			String urljob = "http://JobsModule/updatejobtimestatus";
 			restTemplate.put(urljob, jobs);
 		}
 		else
 		{
-			System.out.println("---------------------------6---------------------------");
+			System.out.println("---------------------------5---------------------------");
 			return false;
 		}
 		
-		System.out.println("---------------------------7---------------------------");
+		System.out.println("---------------------------6---------------------------");
 			return true;
 			
 	}
